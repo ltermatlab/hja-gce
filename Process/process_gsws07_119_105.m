@@ -36,7 +36,9 @@ fn_xml = {'index.xml';'index2.xml'};
         'http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/harvest_dashboard_select.xsl'};
 
 %load the GCE data strucgure
+if ~exist(fn_dest)
 load(strcat(pn_dest,'\data\',fn_dest));
+end
 
 % breadcrumb navigation for harvest dashboard webpage 
        nav = { ...
