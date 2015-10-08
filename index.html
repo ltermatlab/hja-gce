@@ -1,0 +1,438 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+      <link rel="stylesheet" media="all" href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/harvest_webpage.css"/>
+	  
+	  <title>HJA Real-time Data Portal (powered by GCE Toolbox for Matlab)</title>
+	  
+	  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40831925-1', 'oregonstate.edu');
+  ga('send', 'pageview');
+
+</script>
+   </head>
+   <body>
+      <div id="header">
+         <a href="http://andrewsforest.oregonstate.edu/lter/about/weather/hja.cfm">
+            <img src="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/hja-gce-logo-2.png" alt="Data management powered by GCE Toolbox" width="580" height="110"/>
+         </a>
+      </div>
+      <div id="navigation">
+         <a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/index.html">Home</a> &gt;
+            <span class="current-page">HJA Data Portal (powered by GCE)</span></br >
+			<a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/qc-flag-definitions.html">Data Quality Flag Definitions</a></br >
+			<a href="http://andlter.forestry.oregonstate.edu/Notes/">IM and Field Management Notes</a></br >
+			<a href="http://andrewsforest.oregonstate.edu/lter/data/studies/ms01/meta/template.cfm?page=instlist&topnav=135">Instrument Descriptions</a></br >
+      </div>
+         <!-- InstanceBeginEditable name="body" -->
+<h3><center>Welcome to the HJA Data Portal - <span style="font-weight:normal"></br >A browsable list of data sets and plots from federal<br/>
+ and HJA-affiliated monitoring programs operating near the Andrews
+  Forest, Blue River, Oregon, USA.</center></span></h3>
+  
+<div id="monitoring">
+  
+  <h3><center>Benchmark Stations</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station <span style="font-weight:normal">(<a href="http://esripm.maps.arcgis.com/apps/MapTour/index.html?appid=d3163266472c4e14946e16e2e5ca8353&webmap=d778f1a64cf3410c808f2ac57d023dd4" target="_blank">map</a>)</span></th>
+      <th>Station&nbsp;Type</th>
+      <th>Most Recent File(s)</th>
+      <th>Dashboard Views</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+    <tr>
+      <td><a href="CenMet/data/">Central Met Station</a></td>
+      <td>Climate</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/CenMet/data/cenmet_233_a_5min_2015.html">CenMet 233a</a><br /> <a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/CenMet/data/cenmet_234_a_5min_2015.html">CenMet 234a</a>
+      </td>
+      <td><a href="CENMET/dash/233_a_105/index.xml">5min Dashboard #233a </a></br><a href="CENMET/dash/234_a_105/index.xml">5min Dashboard #234a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="PRIMET/data/">Primary Met Station</a></td>
+      <td>Climate</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/PRIMET/data/primet_226_a_5min_2015.html">PriMet
+  226a</a><br /> <a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/PRIMET/data/primet_229_a_5min_2015.html">PriMet
+  229a</a><br /> <a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/PRIMET/data/primet_229_b_5min_2015.html">PriMet
+  229b</a><br /> <a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/PRIMET/data/primet_230_a_5min_2015.html">PriMet
+  230a</a></td>
+      <td><a href="PRIMET/dash/226_a_105/index.xml">5min Dashboard
+  #226a</a></br/><a href="PRIMET/dash/229_a_105/index.xml">5min Dashboard #229a</a></br><a href="PRIMET/dash/229_b_105/index.xml">5min Dashboard #229b</a></br><a href="PRIMET/dash/230_a_105/index.xml">5min Dashboard #230a</a></br></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="UPLMET/data/">Upper Lookout Met Station</a></td>
+      <td>Climate</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/UPLMET/data/uplmet_227_5min_2015.html">5min</a><br /><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/UPLMET/data/uplmet_227_15min_2015.html">15min</a></td>
+      <td><a href="UPLMET/dash/227_a_105/index.xml">5min Dashboard #227</a></br><a href="UPLMET/dash/227_a_115/index.xml">15min Dashboard #227</a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="VANMET/data/">Vanilla Leaf Met Station</a></td>
+      <td>Climate</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/VANMET/data/vanmet_231_a_5min_2015.html">VanMet
+  231a</a><br />
+	<a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/VANMET/data/vanmet_232_a_5min_2015.html">VanMet
+  232a</a><br />
+      <a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/VANMET/data/vanmet_232_b_5min_2015.html">VanMet
+  232b</a></td>
+      <td><a href="VANMET/dash/231_a_105/index.xml">5min Dashboard #231a</a></br><a href="VANMET/dash/232_a_105/index.xml">5min Dashboard #232a</a></br><a href="VANMET/dash/232_b_105/index.xml">5min Dashboard #232b</a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="VARA/data/">Vanilla Rain Gage</a></td>
+      <td>Climate</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/VARA/data/varmet_302_a_5min_2015.html">VarMet
+  302a</a>
+      </td>
+      <td><a href="VARA/dash/302_a_105/index.xml">5min Dashboard #302a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+  </table>
+	
+  <h3><center>Secondary Stations</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station</th>
+      <th>Station&nbsp;Type</th>
+      <th>Partners</th>
+      <th>Period of Record</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+    <tr>
+      <td><a href="CS2MET/data/">Climatic Station Watershed 2</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="HI15/data/">HI15 Monitoring Station</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2013&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+  </table>
+	
+  <h3><center>Long-term Hydrographic Monitoring Stations</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station</th>
+      <th>Station&nbsp;Type</th>
+      <th>Most Recent File(s)</th>
+      <th>Dashboard Views</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+    <tr>
+      <td><a href="GSWS01/data/">Watershed 1 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a
+  href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS01/data/gsws01_115_5min_2015.html">5min</a><br</td>
+      <td><a href="GSWS01/dash/115_a_105/index.xml">5min Dashboard #115a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSWS02/data/">Watershed 2 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS02/data/gsws02_116_5min_2015.html">5min</a></td>
+      <td><a href="GSWS02/dash/116_a_105/index.xml">5min Dashboard #116a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSWS03/data/">Watershed 3 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS03/data/gsws03_117_5min_2015.html">5min</a></td>
+      <td><a href="GSWS03/dash/117_a_105/index.xml">5min Dashboard #117a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSWS06/data/">Watershed 6 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS06/data/gsws06_118_5min_2015.html">5min</a></td>
+      <td><a href="GSWS06/dash/aa8_a_105/index.xml">5min Dashboard #118a</a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSWS07/data/">Watershed 7 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS07/data/gsws07_119_5min_2015.html">5min</a></td>
+      <td><a href="GSWS07/dash/119_a_105/index.xml">5min Dashboard #119a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSWS08/data/">Watershed 8 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSWS08/data/gsws08_120_5min_2015.html">5min</a></td>
+      <td><a href="GSWS08/dash/120_a_105/index.xml">5min Dashboard #120a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+    <tr>
+      <td><a href="">Watershed 09 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="">5min</a></td>
+      <td><a href="">5min Dashboard #121a </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="">Watershed 10 Gage Station </a></td>
+      <td>Gage</td>
+      <td><a href="">5min</a></td>
+      <td><a href="">5min Dashboard #122 </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="GSMACK/data/">Mack Cr. Gage Station</a></td>
+      <td>Gage</td>
+      <td><a href="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/GSMACK/data/gsmack_114_5min_2015.html">5min</a></td>
+      <td><a href="GSMACK/dash/114_a_105/index.xml">5min Dashboard #114 </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+  </table>
+<h3><center>Stream Temperature Network</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station</th>
+      <th>Station&nbsp;Type</th>
+      <th>Partners</th>
+      <th>Period of Record</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+    <tr>
+      <td><a href="STREAMT/LOLO/data/">Lower Lookout (LOLO)</a></td>
+      <td>Hydrology</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="STREAMT/LOMA/data/">Lookout and Mack (LOMA)</a></td>
+      <td>Hydrology</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="STREAMT/LOUP/data/">Lookout and Upper (LOUP)</a></td>
+      <td>Hydrology</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="STREAMT/MCUP/data/">McRae Upper (MCUP)</a></td>
+      <td>Hydrology</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+  </table>
+  <h3><center>Reference Stands</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station</th>
+      <th>Station&nbsp;Type</th>
+      <th>Partners</th>
+      <th>Period of Record</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+    <tr>
+      <td><a href="RS/RS02/data/">Reference Stand 02</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS04/data/">Reference Stand 04</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS05/data/">Reference Stand 05</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS10/data/">Reference Stand 10</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS12/data/">Reference Stand 12</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS20/data/">Reference Stand 20</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS26/data/">Reference Stand 26</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS38/data/">Reference Stand 38</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS86/data/">Reference Stand 86</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="RS/RS89/data/">Reference Stand 89</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td>Dec&nbsp;2010&nbsp;- present</td>
+      <td>Annual<br/>
+        (Manual-harvester)</td>
+    </tr>
+  </table>
+  <h3><center>Other Stations</center></h3>
+  <table class="stations">
+    <tr>
+      <th>Monitoring Station</th>
+      <th>Station&nbsp;Type</th>
+      <th>Partners</th>
+      <th>Dashboard Views</th>
+      <th>Data Update<br/>
+        Frequency</th>
+    </tr>
+	<tr>
+      <td><a href="MISC/STREAMCARBON/data/">Stream Carbon Team</a></td>
+      <td>Misc</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td><a href="MISC/STREAMCARBON/dash/MP1/index2.xml">MP1</a></br><a href="MISC/STREAMCARBON/dash/MP2/index2.xml">MP2</a</td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="MISC/GREEN/data/">GREEN House</a></td>
+      <td>Misc</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td><a href="MISC/GREEN/dash/GREENA_400_115/index2.xml">15min GREEN-A</a></br><a href="MISC/GREEN/dash/GREENB_401_115/index2.xml">15min GREEN-B</a></br><a href="MISC/GREEN/dash/GEM_001/index2.xml">GEM 001</a></br><a href="">GEM 002</a></br><a href="">GEM 003</a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+    <tr>
+      <td><a href="PHRSC/data/">Primet Historic Radiation Shield Comparison</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://www.fs.fed.us/pnw/">USFS</a></td>
+      <td><a href="PHRSC/dash/table1/index2.xml">15min Dashboard</a></br><a href="PHRSC/dash/table2/index2.xml">5min Dashboard</a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+	<tr>
+      <td><a href="WS1MET/data/">Watershed 1 Met and Flux</a></td>
+      <td>Climate</td>
+      <td><a href="http://oregonstate.edu/">OSU</a>, <a href="http://oregonstate.edu/bmm/">BmM</a></td>
+      <td><a href="WS1MET/dash/tempprof/index2.xml">Temperature Profile </a></td>
+      <td>Daily<br/>
+        (Auto-harvester)</td>
+    </tr>
+  </table>
+</div>
+<p style="text-indent: -.125in; margin-left: .625in; margin-right:
+  .5in"><sup>*</sup> Disclaimer: These data are provisional and subject to change.</p>
+    <!-- InstanceEndEditable -->
+      <div id="footer">
+	  <div style="float:left;margin:0 40px 0 0">
+            <a href="http://www.lternet.edu/" title="The long term ecological research network">
+               <img src="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/lter1_sm.png" alt="LTER" width="60" height="60"/>
+            </a>
+		</div>
+	  <div style="float:left;margin:0 40px 0 0">
+            <a href="http://andrewsforest.oregonstate.edu/" title="HJ Andrews Forest">
+               <img src="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/newtlogo5.gif" alt="HJA" width="60" height="60"/>
+            </a>
+		</div>
+		<div style="float:right;margin:0 0 0 30px">
+            <a href="http://www.nsf.gov/" title="NSF">
+               <img src="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/nsf1.gif" alt="NSF" width="64" height="65"/>
+            </a>
+         </div>
+         <div style="float:right;margin:0 0 0 30px">
+            <a href="http://www.fs.fed.us/pnw//" title="USFS">
+               <img src="http://andrewsforest.oregonstate.edu/lter/about/weather/portal/WebHarvestDetails/USFS_Logo.svg.png" alt="USFS" width="60" height="60"/>
+            </a>
+         </div>
+         <p>Development of the <a href="https://gce-svn.marsci.uga.edu/trac/GCE_Toolbox/">GCE Data Toolbox for MATLAB</a> was supported by the <a href="http://www.nsf.gov/">National Science Foundation</a> under
+                     grant numbers <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=9982133">OCE-9982133</a> and <a href="http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=0620959">OCE-0620959</a>.
+                     Any opinions, findings, conclusions, or recommendations expressed in the material are those of the author(s) and do not necessarily reflect the
+                     views of the National Science Foundation.</p>
+      </div>
+   </body>
+</html>

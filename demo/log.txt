@@ -1,0 +1,1020 @@
+clc
+cldear
+{Undefined function or variable 'cldear'.
+} 
+clear
+diary on
+clear
+y = 1
+
+y =
+
+     1
+
+clc
+clear
+dummy1 = name2col(data,{'YearDay','Hour'});
+            dummy2 = name2col(s1,{'YearDay','Hour'});
+dummy1
+
+dummy1 =
+
+     2     3
+
+dummy2
+
+dummy2 =
+
+     1     2
+
+key0 = dummy1
+
+key0 =
+
+     2     3
+
+key1 = dummy2
+
+key1 =
+
+     1     2
+
+jointype = 'lookup';
+[dummy,msg] = joindata( ...
+                data, ...
+                s1, ...
+                key0, ...
+                key1, ...
+                jointype, ...
+                '', ...
+                '');
+help sortdata
+ Performs multi-column, bidirectional sorting on rows in a GCE Data Structure
+ 
+ syntax:  [sdata,msg] = sortdata(data,cols,dirs,caseopt)
+ 
+ inputs:
+   data = data structure to sort
+   cols = array of column numbers or column names to sort by
+   dirs = array of sort directions corresponding to 'cols' (scalar values will be replicated)
+      1 = ascending (default)
+      -1 = descending
+   caseopt = case-sensitive sort option for string columns
+      1 = case-sensitive (default)
+      0 = case-insensitive 
+ 
+ outputs:
+   sdata = sorted data structure
+   msg = text of any error messages
+ 
+ 
+ (c)2002-2013 Wade M. Sheldon and the Georgia Coastal Ecosystems LTER Project
+ 
+ This file is part of the GCE Data Toolbox for MATLAB(r) software library.
+ 
+ The GCE Data Toolbox is free software: you can redistribute it and/or modify it under the terms
+ of the GNU General Public License as published by the Free Software Foundation, either version 3
+ of the License, or (at your option) any later version.
+ 
+ The GCE Data Toolbox is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE. See the GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along with The GCE Data Toolbox
+ as 'license.txt'. If not, see <<a href="matlab:web http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>>.
+ 
+ contact:
+   Wade Sheldon
+   GCE-LTER Project
+   Department of Marine Sciences
+   University of Georgia
+   Athens, GA 30602-3636
+   sheldon@uga.edu
+ 
+ last modified: 21-Apr-2013
+
+dummy = sortdata(dummy,col)
+{Undefined function or variable 'col'.
+} 
+col = name2col(dummy,'Date');
+dummy = sortdata(dummy,col)
+
+dummy = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 13:32:00'
+        editdate: '03-Sep-2014 13:36:46'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,1)">268 </a>            if ~isempty(qc_stats)
+if system_dependent('IsDebugMode')==1, dbstep; end
+{Undefined function or variable 'qc_stats'.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 268)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,0)">line 268</a>)
+            if ~isempty(qc_stats)
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,1)">268 </a>            if ~isempty(qc_stats)
+if system_dependent('IsDebugMode')==1, dbstep; end
+{Undefined function or variable 'qc_stats'.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 268)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,0)">line 268</a>)
+            if ~isempty(qc_stats)
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,1)">268 </a>            if ~isempty(qc_source)
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+key0 =
+
+     2     3
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+key1 =
+
+     []
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+
+ans =
+
+one or both data structures are invalid
+
+s1
+{Undefined function or variable 's1'.
+} 
+s1 = qc_source;
+s1
+
+s1 =
+
+qc_stats.mat
+
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+{Error using <a href="matlab:helpUtils.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of matrices being concatenated are not consistent.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 227)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',227,0)">line 227</a>)
+                  msg = [msg,'; a warning occurred appending the data (',msg0,')'];
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,1)">268 </a>            if ~isempty(qc_source)
+load qc_source
+{Error using <a href="matlab:helpUtils.errorDocCallback('load')" style="font-weight:bold">load</a>
+Unable to read file 'qc_source': no such file or directory.
+} 
+load qc_source
+{Error using <a href="matlab:helpUtils.errorDocCallback('load')" style="font-weight:bold">load</a>
+Unable to read file 'qc_source': no such file or directory.
+} 
+clc
+clear
+if system_dependent('IsDebugMode')==1, dbquit; end
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+help load
+ <strong>load</strong> Load data from MAT-file into workspace.
+    S = <strong>load</strong>(FILENAME) loads the variables from a MAT-file into a structure
+    array, or data from an ASCII file into a double-precision array.
+ 
+    S = <strong>load</strong>(FILENAME, VARIABLES) loads only the specified variables from a
+    MAT-file.  VARIABLES use one of the following forms:
+ 
+        VAR1, VAR2, ...          Load the listed variables.  Use the '*'
+                                 wildcard to match patterns.  For
+                                 example, load('A*') loads all variables
+                                 that start with A.
+        '-regexp', EXPRESSIONS   Load only the variables that match the
+                                 specified regular expressions.  For more
+                                 information on regular expressions, type
+                                 "doc regexp" at the command prompt.
+ 
+    S = <strong>load</strong>(FILENAME, '-mat', VARIABLES) forces <strong>load</strong> to treat the file as
+    a MAT-file, regardless of the extension.  Specifying VARIABLES is
+    optional.
+ 
+    S = <strong>load</strong>(FILENAME, '-ascii') forces <strong>load</strong> to treat the file as an ASCII
+    file, regardless of the extension.
+ 
+    <strong>load</strong>(...) loads without combining MAT-file variables into a structure
+    array.
+ 
+    <strong>load</strong> ... is the command form of the syntax, for convenient loading from
+    the command line. With command syntax, you do not need to enclose input
+    strings in single quotation marks. Separate inputs with spaces instead 
+    of commas. Do not use command syntax if FILENAME is a variable.
+    
+    Notes:
+ 
+    If you do not specify FILENAME, the <strong>load</strong> function searches for a file
+    named matlab.mat.
+ 
+    ASCII files must contain a rectangular table of numbers, with an equal
+    number of elements in each row.  The file delimiter (character between
+    each element in a row) can be a blank, comma, semicolon, or tab.  The
+    file can contain MATLAB comments.
+ 
+    Examples:
+ 
+        gongStruct = load('gong.mat')      % All variables
+        load('handel.mat', 'y')            % Only variable y
+        load('accidents.mat', 'hwy*')      % Variables starting with "hwy"
+        load('topo.mat', '-regexp', '\d')  % Variables containing digits
+ 
+        % Using command form
+        load gong.mat
+        load topo.mat -regexp \d
+        load 'hypothetical file.mat'       % Filename with spaces
+ 
+    See also <a href="matlab:help save">save</a>, <a href="matlab:help matfile">matfile</a>, <a href="matlab:help whos">whos</a>, <a href="matlab:help clear">clear</a>, <a href="matlab:help regexp">regexp</a>, <a href="matlab:help importdata">importdata</a>, <a href="matlab:help uiimport">uiimport</a>.
+
+    Overloaded methods:
+       <a href="matlab:help COM/load">COM/load</a>
+
+    Reference page in Help browser
+       <a href="matlab:doc load">doc load</a>
+
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+%qc_source          = 'qc_stats.mat';
+s1                 = load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+ s1                 = load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+                           |
+{Error: Unexpected MATLAB expression.
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+%qc_source          = 'qc_stats.mat';
+s1                 = load ('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat');
+load ('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat', 'oldStruct');
+[Warning: Variable 'oldStruct' not found.] 
+clc
+clear
+load ('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat', 'data');
+s1 = Data.data;
+{Undefined variable "Data" or function "Data.data".
+} 
+s1 = data.data;
+{Reference to non-existent field 'data'.
+} 
+s1 = data
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+clear data
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+s1 = data;
+clear data
+clc
+clear
+
+
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+s1 = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+{Error using <a href="matlab:helpUtils.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of matrices being concatenated are not consistent.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 227)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',227,0)">line 227</a>)
+                  msg = [msg,'; a warning occurred appending the data (',msg0,')'];
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+s1 = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+{Undefined function or variable 's1'.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 268)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,0)">line 268</a>)
+            if ~isempty(s1)
+} 
+clc
+clear
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',268,1)">268 </a>            if ~isempty(qc_source)
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+key0 =
+
+     2     3
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+key1 =
+
+     1     2
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+dummy = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:02:20'
+        editdate: '03-Sep-2014 14:02:26'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+
+ans =
+
+successfully harvested data from demo\PHRSC.dat
+
+{Operation terminated by user during <a href="matlab:helpUtils.errorDocCallback('listdialog', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\support\listdialog.m', 213)" style="font-weight:bold">listdialog</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\support\listdialog.m',213,0)">line 213</a>)
+
+
+In <a href="matlab:helpUtils.errorDocCallback('ui_editor', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\gui\ui_editor.m', 5358)" style="font-weight:bold">ui_editor</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\gui\ui_editor.m',5358,0)">line 5358</a>)
+                  Isel = listdialog('liststring',str, ...
+
+In <a href="matlab:helpUtils.errorDocCallback('ui_editor', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\gui\ui_editor.m', 5335)" style="font-weight:bold">ui_editor</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\gui\ui_editor.m',5335,0)">line 5335</a>)
+                     ui_editor('loadvar');
+} 
+Interrupt while evaluating uimenu Callback.
+
+clc
+clear
+cxlc
+{Undefined function or variable 'cxlc'.
+} 
+clc
+clear
+
+
+
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+qc_source          = 'qc_stats.mat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+
+dummy = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:04:30'
+        editdate: '03-Sep-2014 14:04:30'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+{Error using <a href="matlab:helpUtils.errorDocCallback('save')" style="font-weight:bold">save</a>
+Variable 'qc_dummy' not found.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 293)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',293,0)">line 293</a>)
+            save([pn_data,filesep,fn_dest],'qc_dummy')
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+
+dummy = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:05:08'
+        editdate: '03-Sep-2014 14:05:08'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',290,1)">290 </a>            end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+{Error using <a href="matlab:helpUtils.errorDocCallback('save')" style="font-weight:bold">save</a>
+Variable 'qc_dummy' not found.
+
+Error in <a href="matlab:helpUtils.errorDocCallback('data_harvester', 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m', 293)" style="font-weight:bold">data_harvester</a> (<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',293,0)">line 293</a>)
+            save([pn_data,filesep,fn_dest],'qc_dummy')
+} 
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',285,1)">285 </a>            end
+if system_dependent('IsDebugMode')==1, dbcont; end
+
+dummy = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:07:10'
+        editdate: '03-Sep-2014 14:07:49'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+
+ans =
+
+successfully harvested data from demo\PHRSC.dat
+
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',277,1)">277 </a>            [dummy,msg] = joindata( ...
+if system_dependent('IsDebugMode')==1, dbquit; end
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'dummy.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+<a href="matlab: opentoline('C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\data_harvester.m',277,1)">277 </a>            [data,msg] = joindata( ...
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbstep; end
+
+data = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:13:09'
+        editdate: '03-Sep-2014 14:13:16'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+if system_dependent('IsDebugMode')==1, dbstep; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+
+ans =
+
+successfully harvested data from demo\PHRSC.dat
+
+clc
+clear
+pn_source          = 'demo';
+fn_source          = 'PHRSC.dat';
+load 'C:\Users\kennedad\Dropbox\gce_datatools_380_gce_production\demo\qc_stats.mat';
+qc_source = data;
+clear data
+template           = 'LNDB_phrsc_2';
+sitecode           = '';
+profile            = 'LNDB_HJA_PHRSC';
+pn_dest            = 'data';
+pn_plots           = '';
+html               = '0';
+email              = '0';
+fn_dest            = 'PHRSC_15min.mat';
+reprocess          = '1';
+
+%% call the harvester
+data_harvester(pn_source,fn_source,qc_source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest,reprocess)
+
+s1 = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: 'QC Stats'
+        metadata: {87x3 cell}
+        datafile: {'moving_window_4stations_doy1to365.csv'  [8808]}
+      createdate: '02-Sep-2014 13:41:00'
+        editdate: '03-Sep-2014 13:29:39'
+         history: {11x2 cell}
+            name: {1x10 cell}
+           units: {'day'  'hr'  ''  ''  ''  ''  ''  ''  ''  ''}
+     description: {1x10 cell}
+        datatype: {'d'  'd'  'f'  'f'  'f'  'f'  'f'  'f'  'f'  'f'}
+    variabletype: {1x10 cell}
+      numbertype: {1x10 cell}
+       precision: [0 0 4 5 4 4 4 4 4 4]
+          values: {1x10 cell}
+        criteria: {'x<1='I';x>366='I''  'x<0='I';x>24='I''  ''  ''  ''  ''  ''  ''  ''  ''}
+           flags: {''  [8760x1 char]  ''  ''  ''  ''  ''  ''  ''  ''}
+
+
+key0 =
+
+     2     3
+
+
+key1 =
+
+     1     2
+
+
+data = 
+
+         version: 'GCE Data Structure 1.1 (29-Mar-2001)'
+           title: [1x75 char]
+        metadata: {87x3 cell}
+        datafile: {2x2 cell}
+      createdate: '03-Sep-2014 14:15:44'
+        editdate: '03-Sep-2014 14:15:44'
+         history: {27x2 cell}
+            name: {1x22 cell}
+           units: {1x22 cell}
+     description: {1x22 cell}
+        datatype: {1x22 cell}
+    variabletype: {1x22 cell}
+      numbertype: {1x22 cell}
+       precision: [0 0 6 3 3 3 3 3 3 3 1 2 4 2 4 5 4 4 4 4 4 4]
+          values: {1x22 cell}
+        criteria: {1x22 cell}
+           flags: {1x22 cell}
+
+
+ans =
+
+successfully harvested data from demo\PHRSC.dat
+
+clc
+clear

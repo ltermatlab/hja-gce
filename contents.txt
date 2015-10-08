@@ -1,0 +1,1753 @@
+                            GCE Data Toolbox for MATLAB (version 3.9.4, 27-Aug-2015)
+
+                   (c)2002-2015 Wade M. Sheldon and the Georgia Coastal Ecosystems LTER Project
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                       Core GCE Data Toolbox Functions                                        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+add_anomalies             Summarizes flagged and missing values for specified parameters and stores the report in the Data/Anomalies
+                          syntax: [s2, msg] = add_anomalies(s, format, datesep, missing, cols, overwrite)
+
+add_calcexpr              Evaluates a text expression as a MATLAB statement and adds the resultant values to a GCE Data Structure
+                          syntax: [s2, msg, expression] = add_calcexpr(s, expr, colname, colunits, coldesc, pos, repscalar, colcrit, vartype, overwrite)
+
+add_datecol               Generates a column of formatted date values from date component columns or an existing date column in a GCE Data Structure
+                          syntax: [s2, msg] = add_datecol(s, format, cols, pos)
+
+add_datepartcols          Adds numerical date part columns to a GCE Data Structure, based on a single serial date column
+                          syntax: [s2, msg] = add_datepartcols(s, datecol, timecol, dateparts, position)
+
+add_flagdef               Adds a Q/C flag definition to a GCE Data Structure if not already defined
+                          syntax: [s2, msg] = add_flagdef(s, flag, flagdef)
+
+add_harvest_log           Logs results of a harvest operation initiated by start_harvesters to a GCE Data Structure
+                          syntax: msg = add_harvest_log(harvester, entry, logfile)
+
+add_history               Adds an entry to the data structure processing history
+                          syntax: [s2, msg] = add_history(s, str, fcn)
+
+add_itis_tsn              Looks up ITIS taxonomic serial numbers for a column of taxonomic names or codes in a GCE Data Structure
+                          syntax: [s2, msg] = add_itis_tsn(s, col, searchtype, tsn_name, tsn_pos, decode)
+
+add_latloncoords          Adds latitude and longitude coordinates (deg) to a GCE Data Structure containing geographic coordinates in UTM (m)
+                          syntax: [s2, msg] = add_latloncoords(s, easting_col, northing_col, zone_col, hem_col, position, datum)
+
+add_locations             Adds a column of location names to a dataset based on geographic lookups of reference station coordinates
+                          syntax: [s2, msg] = add_locations(s, tol, qc_tol, loctype, offsetcol, loncol, latcol, colname, colposition, reffile)
+
+add_ncdc_metadata         Adds metadata to a NOAA NCDC data set based on station information in ''ncdc_ghcnd_stations.mat''
+                          syntax: [s2, msg] = add_ncdc_metadata(s, stationid)
+
+add_riverdist_gps         Adds geographic coordinate columns to a GCE Data Structure based on river distances
+                          syntax: [s2, msg] = add_riverdist_gps(s, river, distcol, coordtype)
+
+add_sitemetadata          Adds or updates site and location metadata based on site, station or location codes or geographic coordinates
+                          syntax: [s2, msg] = add_sitemetadata(s, cols, siteprefix, autopolygons)
+
+add_sitenames             Adds a column of site names to a data structure by matching location names to sites in 'geo_locations.mat'
+                          syntax: [s2, msg] = add_sitenames(s, locationcol, colname, colposition)
+
+add_stationcoords         Adds geographic coordinate columns to a data structure by matching station or location codes to entries
+                          syntax: [s2, msg] = add_stationcoords(s, coordtype, col)
+
+add_studydates            Adds study date metadata descriptors to a GCE Data Structure, based on the range of date values in
+                          syntax: [s2, msg] = add_studydates(s, datecol)
+
+add_studysites            Adds a column of GCE site codes to a data structure by matching values in geographic coordinate columns
+                          syntax: [s2, msg] = add_studysites(s, sitetype, colname, loncol, latcol)
+
+add_tide_stage            Generates text or numeric tide stage columns from a selected depth or pressure column in a GCE data structure
+                          syntax: [s2, msg] = add_tide_stage(s, col_date, col_depth, stagecols, timestep, polyorder)
+
+add_title_dates           Adds or updates a formatted date range to the title of a GCE Data Structure based the dates of observations
+                          syntax: [s2, msg] = add_title_dates(s, format, separator)
+
+add_transect_dist         Adds trandsect and distance columns to a GCE Data Structure by matching GPS coordinates to transect coordinates
+                          syntax: [s2, msg] = add_transect_dist(s, loncol, latcol, transect, accuracy, disttol)
+
+add_unit_mappings         Adds units to the GCE Data Toolbox unit conversion database by mapping to existing units
+                          syntax: [msg, unmapped] = add_unit_mappings(units1, units2)
+
+add_utmcoords             Adds geographic coordinates in UTM units to a GCE Data Structure containing coordinates in lat/lon (decimal degrees)
+                          syntax: [s2, msg] = add_utmcoords(s, latcol, loncol, position, datum)
+
+add_year_yearday_hours    Adds Year, YearDay and Hours columns to a GCE Data Structure, calculated from existing date/time columns
+                          syntax: [s2, msg] = add_year_yearday_hours(s, datecol, position)
+
+add_yeardaycol            Adds a numerical year day column to a GCE Data Structure, based on serial date or formatted date and time columns
+                          syntax: [s2, msg] = add_yeardaycol(s, roundopt, datecol, timecol, position)
+
+addcol                    Adds a column array as a new calculated column to a GCE-LTER data structure
+                          syntax: [s2, msg] = addcol(s, newdata, name, units, description, datatype, variabletype, numbertype, precision, criteria, pos, overwrite)
+
+addflags                  Adds manual qualifier flags to all or selected records in one or more columns of a GCE Data Structure
+                          syntax: [s2, msg] = addflags(s, cols, rows, flag, flagdef)
+
+addmeta                   Appends or updates metadata fields in a GCE-LTER data structure or metadata array
+                          syntax: [s2, msg] = addmeta(s, newmeta, silent, fncname, appendopt)
+
+aggr_bindata              Bins data by values in the specified numerical column after aggregation by one or more grouping columns
+                          syntax: [s2, msg] = aggr_bindata(s, bincol, bins, emptybinopt, flagopt, agcols, datacols, qcrules)
+
+aggr_datetime             Performs statistical aggregation on selected data columns at the specified date/time interval
+                          syntax: [s2, msg] = aggr_datetime(s, interval, dtcols, aggrcols, statcols, statopt, flagopt, qcrules, missing_anom, tminmax)
+
+aggr_index                Returns a sorted data structure and grouping index for use in aggregation operations
+                          syntax: [s2, I_breaks] = aggr_index(s, agcols)
+
+aggr_movingdatewindow     Generates a smoothed time series data set by statistically summarizing values along a sliding date window
+                          syntax: [s2, msg] = aggr_movingdatewindow(s, days, datecol, agcols, statcols, statopt, flagopt, qcrules)
+
+aggr_stats                Statistical aggregation function for summarizing or re-sampling GCE Data Structures
+                          syntax: [s2, msg] = aggr_stats(s, aggrcols, statcols, statopt, flagopt, qcrules, tminmax)
+
+aggr_stats_text           Statistical aggregation function for summarizing both numeric and text columns in a GCE Data Structure
+                          syntax: [s2, msg] = aggr_stats_text(s, aggrcols, statcols, statopt, flagopt, qcrules, tminmax, delim, textcount)
+
+aggr_sums                 Sorts and aggregates data in a GCE-LTER data structure by one or more columns,
+                          syntax: [s2, msg] = aggr_sums(s, aggrcols, statcols, statopt, flagopt)
+
+aggr_topbottom            Returns top and bottom values for data columns in a data structure based on values in a depth or pressure column,
+                          syntax: [s2, msg] = aggr_topbottom(s, depcol, agcols, datacols, compactrowsopt)
+
+append_data               Appends a GCE Data Structure to an existing data structure on disk using a specified merge type
+                          syntax: [s2, msg] = append_data(s, fn, varname, mergetype, titleopt, fixflags, saveopt)
+
+apply_template            Applies a metadata template to a data structure, matching parameters by name
+                          syntax: [s2, msg] = apply_template(s, template, metaopt, logchanges, fn_templates)
+
+assign_numtype            Automatically assigns numerical types and precisions to columns in a GCE Data Structure
+                          syntax: [s2, msg] = assign_numtype(s, exptol, cols)
+
+batch_exp_ascii           Exports a batch of files containing GCE Data Structures to delimimited text format
+                          syntax: [msg, filelist, badfiles] = batch_exp_ascii(pn_source, pn_dest, filespec, fmt, hdropt, clearflags, flaglist, flagopt, metastyle, ldr, rnums, misschar, delim, groupcol, appendopt, terminator, datecol, dateformat, silent)
+
+bbox2sites                Returns a list of GCE study sites with bounding polygons intersecting a specified bounding box
+                          syntax: sites = bbox2sites(bbox, matchtype)
+
+calc_date_cr10            Adds a serial date column calculated from year, yearday and integer time columns from a Campbell CR10x logger file
+                          syntax: [s2, msg] = calc_date_cr10(s, col_year, col_yearday, col_time, timezone)
+
+calc_missing_vals         Fills in missing values in one or more columns of a GCE Data Structure using a calculated expression
+                          syntax: [s2, msg] = calc_missing_vals(s, cols, expr, logopt, flag, flagdef)
+
+calc_yearday_stats        Summarizes variables in a time series data set by year day (1-365) for plotting or use in date-based limit checks
+                          syntax: [s2, msg] = calc_yearday_stats(s, datecol, cols, flagopt, qcrules)
+
+cleardupes                Removes rows in a GCE Data Structure in which the contents of all specified columns are duplicated,
+                          syntax: [s2, msg, deletedrows] = cleardupes(s, cols, logopt)
+
+clearflags                Clears specified flags from a GCE Data Structure for display or export purposes
+                          syntax: [s2, msg] = clearflags(s, flagchars, cols, lockopt, metaopt)
+
+clearreps                 Replaces repeated values in the selected columns of a GCE-LTER data structure
+                          syntax: s2 = clearreps(s, cols)
+
+coalesce_cols             Coalesces values in two or more compatible data columns by filling in null/NaN records
+                          syntax: [s2, msg] = coalesce_cols(s, col1, col2, checkunits, flag, deletecol)
+
+codes2criteria            Generates QA/QC criteria for coded columns in a GCE Data Structure based on code definitions
+                          syntax: [s2, msg] = codes2criteria(s, cols, flagcode)
+
+codes2dataset             Generates a code definition data structure for coded columns in a GCE Data Structure
+                          syntax: [s2, msg, badcols] = codes2dataset(s, cols, metaopt)
+
+cols2flags                Converts values in specified text columns of a GCE Data Structure to QA/QC flags for the corresponding data columns
+                          syntax: [s2, msg] = cols2flags(s, flagcols, datacols, overwrite, delete, prefix)
+
+cols2flags_mapped         Converts data set columns to QA/QC flags after mapping multi-character flags to single character equivalents
+                          syntax: [s2, msg] = cols2flags_mapped(s, flagset_name, flagcols, datacols, overwrite, delete)
+
+colstats                  Calculates basic descriptive statistics for columns in a standard GCE-LTER data structure
+                          syntax: [stats, msg] = colstats(data, flagopt, groupcol)
+
+compactcols               Deletes columns in a data structure in which all values are null/empty
+                          syntax: [s2, msg] = compactcols(s, cols)
+
+compactrows               Compacts a GCE Data Structure by eliminating rows in the structure in which all indicated data columns contain NaN or ''
+                          syntax: [s2, msg, deletedrows] = compactrows(s, datacols)
+
+concat_cols               Concatenates text columns in a GCE data structure to create a single text column
+                          syntax: [s2, msg] = concat_cols(s, cols, separator, deleteoption, colname, vartype, criteria, units, description)
+
+convert_csi_time          Converts Campbell Scientific max/min times in hhmm integer or h:m string format to a standard time format
+                          syntax: [s2, msg] = convert_csi_time(s, cols, fmt)
+
+convert_datatype          Converts specified columns in a GCE Data Structure to a new data type, transforming values as necessary
+                          syntax: [s2, msg, badcols] = convert_datatype(s, cols, newdtype, integeropt)
+
+convert_date_format       Converts the format of specified date/time columns in a GCE Data Structure to a new format
+                          syntax: [s2, msg] = convert_date_format(s, cols, fmt)
+
+convert_num2str           Converts values in a numeric data column of a GCE Data Structure to string values using 'int2str'
+                          syntax: [s2, msg] = convert_int2str(s, col, vartype)
+
+copy_attribute_meta       Copies attribute metadata between specified columns in two data structures
+                          syntax: [s2, msg] = copy_attribute_meta(s1, s2, cols_s1, cols_s2, metafields)
+
+copycol                   Copies and renames a single column in a GCE Data Structure
+                          syntax: [s2, msg] = copycol(s, col, colname)
+
+copycols                  Copies data from one or more columns in a GCE Data Structure to form a new data structure or array
+                          syntax: [s2, msg] = copycols(s, cols, return_meta, skip_validation)
+
+copyflags                 Copies composite flags from one or more columns and adds to or replaces the existing flag arrays
+                          syntax: [s2, msg] = copyflags(s, flagcols, datacols, opt)
+
+copyrows                  Copies data from one or more rows in a GCE-LTER data structure to form a new data structure or array
+                          syntax: [s2, msg] = copyrows(s, rows, metadata)
+
+correct_drift             Corrects sensor drift by applying a constant, linearly-varying or custom weighted offset for a range of dates
+                          syntax: [s2, msg] = correct_drift(s, cols, method, offset, daterange, datecol, flagchar, logopt)
+
+ctd_bin_avg               Generates a bin-averaged and interpolated data set from a CTD profile
+                          syntax: [s2, msg] = ctd_bin_avg(s, depcol, castcol, agcols, datacols, bin_top, bin_interval, emptybinopt, flagopt, qcrules, interp_method)
+
+cullflags                 Deletes all records from a GCE Data Structure containing any values assigned specified flags
+                          syntax: [s2, msg] = cullflags(s, flagchars, cols, metaopt, logsize)
+
+dataflag                  Evaluates Q/C criteria or assigns user-specified flags to generate or update Q/C flag arrays
+                          syntax: [s2, msg, flagerrors] = dataflag(s, cols, manual_flags)
+
+datamerge                 Merges (concatenates) two GCE Data Structures to create a combined structure
+                          syntax: [s, msg] = datamerge(s1, s2, order, addcols, units, fixflags, calcflags)
+
+daterange2flags           Assigns Q/C flags by date range and locks flags to prevent automatic recalculation
+                          syntax: [s2, msg] = daterange2flags(s, datecol, dates, cols, flag)
+
+daterange2str             Generates textual descriptions of ranges of serial dates based on a selection index
+                          syntax: str = daterange2str(dt, I_dt, format, datesep)
+
+decodecols                Converts coded columns in a GCE Data Structure to text columns based on code definitions in the metadata
+                          syntax: [s2, msg, badcols] = decodecols(s, cols, suffix, colnames)
+
+deletecols                Deletes specified columns from a GCE Data Structure, ignoring any unmatched column names or indices
+                          syntax: [s2, msg] = deletecols(s, cols, silent)
+
+deleterows                Deletes data from one or more rows in a GCE-LTER data structure to form a new data structure or array.
+                          syntax: [s2, msg] = deleterows(s, rows, logoption)
+
+dupe_index                Returns an index of records in a GCE Data Structure with duplicate values in all or specified columns
+                          syntax: [I_dupes, msg] = dupe_index(s, cols, nan_opt)
+
+edit_importfilters        Opens the list of GCE Data Toolbox import filter definitions stored in 'imp_filters.mat' into a grid for editing
+                          syntax: edit_importfilters(op, data)
+
+encodestrings             Encodes text columns in a GCE data structure as series of unique integers
+                          syntax: [s2, msg] = encodestrings(s, reconcile)
+
+extract                   Extracts columns from a GCE-LTER data structure and returns standard numeric or cell arrays of strings
+                          syntax: [vals, flags, cols_returned, msg] = extract(data, cols, maxrows)
+
+extract_rows              Extracts selected rows from columns in a GCE-LTER data structure as numeric or cell arrays of strings
+                          syntax: [vals, flags, cols_returned, msg] = extract_rows(data, cols, rowindex)
+
+fill_date_gaps            Fills in missing date/time records in a time-series data set to create uniform time intervals
+                          syntax: [s2, msg, dupe_flag, dt_add] = fill_date_gaps(s, datecol, remove_dupes, repl_nondata)
+
+fill_meta_tokens          Replaces tokens in metadata templates with text from the corresponding metadata fields
+                          syntax: [s2, msg] = fill_meta_tokens(s, sections)
+
+filter_by_daterange       Filters a GCE data structure to include one or more specified date ranges
+                          syntax: [s2, msg] = filter_by_daterange(s, date_start, date_end, comparison)
+
+filter_by_dates           Filters a dataset to only include records for a specified set of dates
+                          syntax: [s2, msg] = filter_by_dates(s, dates, datecol, tolerance, matchtype, showmatch)
+
+fixprec                   Sets numerical precision of specified columns in a GCE Data Structure equal to the display precision
+                          syntax: [s2, msg] = fixprec(s, cols, opt)
+
+gce_valid                 Identifies and validates a GCE-LTER Data or Stat Structure by checking for required fields and verifying
+                          syntax: [val, stype, msg] = gce_valid(s, stype)
+
+gceds2cell                Converts a GCE Data Structure to a standard MATLAB cell array
+                          syntax: ar = gceds2cell(s, cols)
+
+gceds2struct              Converts columns of a GCE Data Structure to a standard structure variable with fields named based on columns
+                          syntax: [s2, msg] = gceds2struct(s, dim, flagopt, flagcols)
+
+gceds2table               Converts data, qualifier flags and metadata from a GCE Data Structure to a MATLAB table object
+                          syntax: [tbl, msg] = gceds2table(s, flagopt, flagcols)
+
+get_flagdefs              Retrieves definitions for selected QA/QC flags from GCE Data Structure metadata
+                          syntax: flagdefs = get_flagdefs(s, flags, sep)
+
+get_importfilters         Returns a database of GCE Data Toolbox import filter definitions stored in 'imp_filters.mat'
+                          syntax: filters = get_importfilters()
+
+get_metadata_bbox         Parses geographic coordinates in GCE Data Structure metadata to return bounding box coordinates
+                          syntax: [wboundlon, eboundlon, sboundlat, nboundlat] = get_metadata_bbox(s)
+
+get_open_dataset          Retrieves a data structure from an open editor window selected via listbox
+                          syntax: [s, msg] = get_open_dataset(listwidth)
+
+get_studydates            Retrieves serial dates for records in a GCE Data Structure based on analysis of datetime columns
+                          syntax: [dt, msg, s, datecol] = get_studydates(s, datecol)
+
+get_templates             Retrieves a structure containing GCE Data Toolbox metadata templates
+                          syntax: templates = get_templates(fn, upgradefile)
+
+get_type                  Returns the specified attribute descriptor for specified columns in a GCE Data Structure
+                          syntax: types = get_type(s, attribute, cols)
+
+getpath                   Retrieves path cache information from the active GCE Data Toolbox editor window
+                          syntax: pn = getpath(pathtype)
+
+harvest_check             Generates a harvest check email based on user-specified thresholds for missing and flagged values
+                          syntax: msg = harvest_check(s, days, missing, flagged, daily_flagged, wrap)
+
+help_flagfnc              Opens a GUI dialog containing help text for all QA/QC flagging functions named 'flag_*'
+                          syntax: help_flagfnc
+
+import_metadata           Imports metadata fields from one GCE Data Toolbox metadata array to update another metadata array
+                          syntax: newmeta = import_metadata(meta, meta_source, fields, importmode)
+
+import_templates          Imports metadata templates to add to or update a GCE Data Toolbox templates database
+                          syntax: [templates, msg] = import_templates(templates_new, tempnames, templates_old)
+
+index2httpindex           Replaces specified file paths in a search index structure with urls for indexing web-hosted data sets
+                          syntax: new_index = index2httpindex(index, pn, url, gce_sendfile, accession, pubdate)
+
+insertrows                Inserts rows of new data into specified columns of an existing GCE Data Structure,
+                          syntax: [s2, msg] = insertrows(s, values, cols, pos)
+
+interp_missing            Performs 1D interpolation to fill in missing values in a single data series using a specified method
+                          syntax: [s2, msg] = interp_missing(s, xcol, ycols, method, maxpts, logopt, flag, flagdef)
+
+interp_missing2           Performs 1D interpolation to fill in missing values in a compound data series using a specified method
+                          syntax: [s2, msg] = interp_missing2(s, xcol, ycols, gpcols, method, maxpts, logopt, flag, flagdef)
+
+interp_missing_diurnal    Performs 1D interpolation to fill in missing values in time-series data based on time of day
+                          syntax: [s2, msg] = interp_missing_diurnal(s, xcol, ycols, datecol, method, maxpts, logopt, flag, flagdef)
+
+interp_missing_stepwise   Performs interpolation to fill in missing values, proceeding step-wise for each unique value in a stepping column
+                          syntax: [s2, msg] = interp_missing(s, xcol, ycols, method, maxpts, logopt)
+
+joindata                  Joins two data structures together by finding matching data rows in one or more common (key) columns
+                          syntax: [s, msg] = joindata(s0, s1, key0, key1, jointype, cols0, cols1, prefix0, prefix1, s1fname, cleardupes, matchunits, metamerge)
+
+list_harvesters           Lists active MATLAB timer objects created by start_harvesters.m
+                          syntax: msg = list_harvesters
+
+listcols                  Lists names and units of all columns in a GCE-LTER data or stat structure
+                          syntax: [lst, msg] = listcols(data, format)
+
+listdatacols              Returns an index of data and/or calculation columns (dependent variables) in a GCE Data Structure
+                          syntax: Icols = listdatacols(s, option)
+
+listhist                  Lists the contents of the history field from a GCE-LTER Data Structure
+                          syntax: str = listhist(data, dateformat, wrap, indent)
+
+listmeta                  Generates formatted metadata from values stored in a GCE Data or Stat structure
+                          syntax: [meta, s_xml] = listmeta(s, style, fn, pn, opt, wrap)
+
+log_metachanges           Documents changes to attribute metadata fields in a GCE Data Structure after application of a template
+                          syntax: editstr = log_metachanges(s0, s, fmt)
+
+lookup_coords             Looks up geographic coordinates in a GCE Data structure and returns arrays on longitude and latitude in decimal degrees
+                          syntax: [lon, lat, loncol, latcol] = lookup_coords(s, loncol, latcol)
+
+lookup_location           Returns details for a specific geographic location registered in 'geo_locations.mat'
+                          syntax: location = lookup_location(loc, reffile)
+
+lookup_sitemetadata       Returns formatted site descriptor metadata for a list of GCE-LTER sampling sites
+                          syntax: [meta, msg] = lookup_sitemetadata(sitecode)
+
+lookup_stationmeta        Returns formatted site descriptor metadata for a list of GCE-LTER sampling locations
+                          syntax: [meta, msg] = lookup_stationmeta(locations, autopolygons)
+
+lookupmeta                Looks up metadata in a GCE Data or Stat Structure by category and fieldname
+                          syntax: str = lookupmeta(s, catname, fieldname)
+
+make_template             Parses a text file to create a metadata template and opens it in the Template Editor application
+                          syntax: [template, msg] = make_template(template_name, fn, pn)
+
+match_sites               Matches GPS coordinates given by longitude and latitude to site polygons in 'geo_polygons.mat'
+                          syntax: [studysites, msg] = match_sites(lon, lat, sitetype, output)
+
+maxrows                   Returns a maximum of 'maxrownum' rows from a GCE-LTER data structure 'data'
+                          syntax: data2 = maxrows(data, maxrownum)
+
+merge_by_date             Merges (i.e. concatenates) two GCE data structures to produce a single time series without duplicate date/time records.
+                          syntax: [s, msg] = merge_by_date(s1, s2, datecol1, datecol2, fixflags, calcflags, trim_opt)
+
+merge_dateplots           Generates an HTML table of date plot thumbnails based on multiple sets of existing plots in a specified directory
+                          syntax: msg = merge_dateplots(prefix_array, caption_array, fn_html, pn, fn_template, pn_template, pagetitle, plot_ext)
+
+mergemeta                 Merges metadata from two GCE Data structures following a data merge or join operation
+                          syntax: newmeta = mergemeta(s1, s2)
+
+meta2struct               Converts an n x 3 cell array containing GCE-LTER metadata into a nested structure
+                          syntax: meta2 = meta2struct(meta)
+
+meta_fields               Returns an array of metadata categories and fields for a named metadata style
+                          syntax: meta = meta_fields(style)
+
+meta_subfields            Adds supported sub-fields to a GCE Data Toolbox metadata array for improved parsing by meta2struct()
+                          syntax: meta2 = meta_subfields(meta)
+
+meta_template             Generates data descriptor metadata for a GCE Data Structure by matching supplied variable names
+                          syntax: [meta, msg] = meta_template(template, varnames, fn_templates)
+
+minvalue2zero             Converts values in specified columns of a GCE Data Structure below a minimum threshold to zero
+                          syntax: [s2, msg] = minvalue2zero(s, cols, minvalue, metadata, flag)
+
+multi_templates           Applies multiple, date-dependent metadata templates to a data set to accomodate parameter metadata changes
+                          syntax: [s2, msg] = multi_templates(s, templates, datecol)
+
+multimerge                Merges (concatenates) multiple GCE Data Structures specified by filename and structure name
+                          syntax: [s, msg] = multimerge(filelist, structnames, mergetype, fixflags, metamerge, addfilename, flagopt, flagchars)
+
+name2col                  Returns an array of column index numbers matching the specified list of column names in a GCE-LTER data structure
+                          syntax: cols = name2col(s, colnames, caseopt, datatype, variabletype, unmatched)
+
+nan2zero                  Converts NaN values in the specified columns of a GCE Data Structure to zeros
+                          syntax: [s2, msg] = nan2zero(s, cols, metadata, flag)
+
+negative2zero             Converts negative values in the specified columns of a GCE Data Structure to zeros
+                          syntax: [s2, msg] = negative2zero(s, cols, metadata, flag)
+
+newstruct                 Creates an empty GCE data or stat (statistical summary) structure, containing all default fields
+                          syntax: s = newstruct(type, titlestr)
+
+newtitle                  Updates the title of a GCE Data or Stat Structure with the specified string
+                          syntax: [s2, msg] = newtitle(s, titlestr, metaopt)
+
+normalize_cols            Normalizes a data set by merging multiple columns to form combined parameter name and parameter value columns
+                          syntax: [s2, msg] = normalize_cols(s, cols, repcols, cat_name, val_name, unitsopt, datatype)
+
+nullflags                 Converts values in a GCE Data Structure assigned specified flags to NaN/empty
+                          syntax: [s2, msg] = nullflags(s, flagchars, cols, metaopt, clearflags, newflag, logsize)
+
+num_records               Returns the number of records in a GCE Data Structure
+                          syntax: numrec = num_records(s)
+
+num_replace               Search and replace numeric values in specified columns of a GCE Data Structure with a new value
+                          syntax: [s2, msg] = num_replace(s, cols, oldval, newval, logopt, flag)
+
+pad_date_gaps             Fills in missing date/time records in a time-series data set to create uniform time intervals
+                          syntax: [s2, msg, dupe_flag, dt_add] = pad_date_gaps(s, datecol, remove_dupes, repl_nondata, min_interval, flag, textfill)
+
+previewdata               Displays a preview of formatted data in a scrolling text box control.
+                          syntax: previewdata(op, vals, fstr)
+
+query_index               Returns an index of rows in a GCE Data Structure matching a query statement
+                          syntax: [I_inc, msg, qry] = query_index(s, qry)
+
+querydata                 Queries values in a GCE Data Structure to return a new data structure containing only rows meeting the criteria
+                          syntax: [s2, rows, qry_final, msg, I_inc] = querydata(s, query)
+
+querystats                Calculates descriptive statistics for values in a GCE-LTER data structure
+                          syntax: [stats, msg] = querystats(data, query, flagopt, groupcol, cols)
+
+readheader                Parses documentation and attribute descriptor metadata using 'imp_ascii.m' to update a GCE Data Structure
+                          syntax: [s2, msg] = readheader(fn, pn, s)
+
+readmeta                  Reads a text file containing delimited metadata fields ([category_field]:[value])
+                          syntax: [s2, msg] = readmeta(fn, pn, s)
+
+rename_column             Updates the name of a column in a GCE Data Structure, propagating the change
+                          syntax: [s2, msg] = rename_column(s, column, column_name, column_description, silent)
+
+search_data               Identifies GCE Data Structures in one or more directories matching specified search criteria
+                          syntax: [paths, filenames, varnames, accessions, titles, daterange] = search_data(qry, index, pn)
+
+search_index              Generates a search index for 'search_data' by inspecting all MATLAB files in the specified directories
+                          syntax: index = search_index(pn, index, option, subdir, flagcols, fn_index)
+
+set_type                  Sets attribute descriptor values for specified columns in a GCE Data Structure
+                          syntax: [s2, msg] = set_type(s, attribute, value, cols)
+
+sortdata                  Performs multi-column, bidirectional sorting on rows in a GCE Data Structure
+                          syntax: [sdata, msg] = sortdata(data, cols, dirs, caseopt)
+
+split_cols                Splits a text column in a GCE data structure on a delimiter character to create multiple columns
+                          syntax: [s2, msg] = split_cols(s, col, delimiter, deleteoption, vartype, units, description, criteria)
+
+split_dataseries          Splits a compound data series based on values in a specified column and serially joins subsets to form a standard table
+                          syntax: [s2, msg] = split_dataseries(s, splitcol, joincols, valcols)
+
+start_harvesters          Creates timer objects based on information stored in 'harvest_timers.mat'
+                          syntax: msg = start_harvesters(harvesters)
+
+stop_harvesters           Stops all or specified harvest timers and deletes the timer object(s) from memory
+                          syntax: msg = stop_harvesters(name)
+
+string_replace            Performs string replacement on one or more text columns in a GCE Data Structure
+                          syntax: [s2, msg] = string_replace(s, cols, oldstring, newstring, matchtype, caseopt, flag, logopt)
+
+syncpath                  Synchronizes path cache information between GCE Data Toolbox editor windows
+                          syntax: syncpath(pn, pathtype)
+
+trim_metadata             Trims excess characters from metadata fields in a GCE Data Structure
+                          syntax: [s2, msg] = trim_metadata(s, maxchars)
+
+trim_textcols             Trims leading and trailing blanks from all or specified text columns in a GCE Data Structure
+                          syntax: [s2, msg] = trim_textcols(s, cols, logopt, flag)
+
+unit_convert              Performs unit conversions on a column in a GCE Data Structure using the specified multiplier or expression.
+                          syntax: [s2, msg] = unit_convert(s, col, newunits, expr, newcol)
+
+update_attributes         Updates attribute metadata for a column in a GCE Data Structure
+                          syntax: [s2, msg] = update_attributes(s, col, attrib_names, attrib_values)
+
+update_codes              Updates value codes defined in the metadata for a column in a GCE Data Structure
+                          syntax: newmeta = update_codes(meta, colname, codenames, codevals, option)
+
+update_data               Updates values in a GCE Data Structure column, optionally logging all value changes
+                          syntax: [s2, msg, Idiffs] = update_data(s, col, newdata, logopt, flag, flagdef, fnc)
+
+update_dataset            Updates data column values and adds new columns from a second GCE Data Structure and logs all changes in the metadata
+                          syntax: [s2, msg] = update_dataset(s, s_update, deleteopt, logopt, matchunits)
+
+update_query              Updates values in a GCE Data Structure column for rows matching specified query criteria
+                          syntax: [s2, msg, I_inc] = update_query(s, col, newval, qry, logopt, flag, flagdef)
+
+update_values             Updates selected values in a GCE Data Structure column based on a row index
+                          syntax: [s2, msg] = update_values(s, col, newdata, rows, logopt, flag, flagdef)
+
+viewhelp                  Displays help text for a specified function in a scrollable text viewer
+                          syntax: viewhelp(fcn)
+
+viewstats                 Displays ungrouped column statistics for a GCE data structure in a scrollable text box
+                          syntax: msg = viewstats(s, flagopt)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                 Graphical User Interface Applications (GUI)                                  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+close_gdt                 Closes all GCE Data Tools and optionally exits MATLAB
+                          syntax: close_gdt(op)
+
+edit_unitconv             Dialog for editing unit conversion tables used by the GCE Data Toolbox.
+                          syntax: edit_unitconv(op, table)
+
+guihelp                   Opens MATLAB help text for a specified function in a scrollable GUI dialog
+                          syntax: guihelp(fcn)
+
+lookup_template           Opens a GUI list dialog for selecting a metadata template defined in imp_templates.mat
+                          syntax: template = lookup_template(default)
+
+ui_aboutgce               GCE Data Toolbox startup splash screen with links to the structure editor and documentation
+                          syntax: ui_aboutgce(op)
+
+ui_aggrdatetime           GCE Data Toolbox date/time aggregated statistics dialog
+                          syntax: ui_aggrdatetime(op, s)
+
+ui_aggrmovingdate         GCE Data Toolbox moving window date/time aggregated statistics dialog
+                          syntax: ui_aggrmovingdate(op, s)
+
+ui_aggrstats              GCE Data Toolbox aggregated statistics dialog
+                          syntax: ui_aggrstats(op, s)
+
+ui_axislimits             Axis limits dialog box for 2D and 3D plots
+                          syntax: ui_axislimits
+
+ui_batch_import           GUI dialog for batch processing data files to import them as GCE Data Structures
+                          syntax: ui_batch_import(op, pn)
+
+ui_bindata                GCE Data Toolbox dialog for calculating statistics on aggregated data binned by values in a specified column.
+                          syntax: ui_bindata(op, s)
+
+ui_calc_missing           GCE Data Toolbox dialog for filling in missing values in a data column using calculated values
+                          syntax: ui_calc_missing(op, s)
+
+ui_calculator             Dialog for adding calculated columns to a GCE Data Structure by evaluating a user-specified MATLAB expression
+                          syntax: ui_calculator(op, s)
+
+ui_clearflags             GCE Data Toolbox dialog for selective deletion of QA/QC flags or flagged values, or selective conversion of flags to columns
+                          syntax: ui_clearflags(op, s, mode, h_cb, cb)
+
+ui_copyflags              GCE Data Toolbox dialog for copying composite flags from one or more data columns
+                          syntax: ui_copyflags(op, s, h_cb, cb)
+
+ui_correct_drift          GCE Data Toolbox dialog for correcting data set columns for sensor drift using 'correct_drift.m'
+                          syntax: ui_correct_drift(op, s)
+
+ui_datagrid               Opens a GCE Data Structure into a metadata-aware grid to allow data values to be viewed and edited
+                          syntax: ui_datagrid(op, s, h, cb, colwid, halign, cache)
+
+ui_dateplots              GUI dialog for generating multiple date plots at various intervals from a time-series plot
+                          syntax: ui_dateplots
+
+ui_dateplots_html         GUI dialog for generating multiple date plots at various intervals from a time-series plot
+                          syntax: ui_dateplots_html
+
+ui_dateplots_template     GUI dialog for generating multiple date plots at various intervals from a time-series plot
+                          syntax: ui_dateplots_template
+
+ui_edit_filters           GUI dialog for editing custom import filter entries for the GCE Data Toolbox
+                          syntax: ui_edit_filters(op, field)
+
+ui_edit_geodatabase       Open the geographic locations database 'geo_locations.mat' into a GUI grid for editing
+                          syntax: ui_edit_locations(op, dbfile, data)
+
+ui_editcodes              GUI dialog for editing value codes for a specified column in a GCE Data Structure
+                          syntax: ui_editcodes(s, col, h_cb, cb)
+
+ui_editmetadata           Dialog for editing metadata stored in a GCE Data Structure (called by 'ui_editor')
+                          syntax: ui_editmetadata(op, s, h, callback)
+
+ui_editor                 GCE Data Toolbox data structure editor for managing and analyzing data stored in GCE Data Structures
+                          syntax: ui_editor(op, s, cb, h_cb)
+
+ui_expclimdb              Dialog for exporting data in LTER ClimDB/HydroDB format
+                          syntax: msg = ui_expclimdb(op, data)
+
+ui_export_eml             Dialog for generating EML metadata and associated text data distribution files
+                          syntax: msg = ui_export_eml(op, data)
+
+ui_exportasc              GUI dialog for exporting data and metadata from a GCE Data Structure in ASCII text format
+                          syntax: ui_exportasc(op, s, fn, pn)
+
+ui_fetch_climdb           GUI dialog for retrieving data from the LTER ClimDB/HydroDB web server
+                          syntax: ui_fetch_climdb
+
+ui_fetch_dataturbine      Opens a dialog box to retrieve data from a Data Turbine server
+                          syntax: ui_fetch_dataturbine(op, h_cb, cb)
+
+ui_fetch_eml_data         Opens a dialog box to retrieve EML-described data tables into the GCE Data Toolbox
+                          syntax: ui_fetch_eml_data(op, h_cb, cb)
+
+ui_fetch_ncdc_ghcnd       GUI dialog for retrieving data from the NOAA NCDC Global Historic Climate Network FTP site
+                          syntax: ui_fetch_ncdc_ghcnd(op, h_cb, cb)
+
+ui_fetch_usgs             GUI dialog for retrieving data from the USGS WWW server
+                          syntax: ui_fetch_usgs(op, h_cb, cb)
+
+ui_flagdefs               QA/QC flag definition and data anomalies editor dialog called by 'ui_editor'.
+                          syntax: ui_flagdefs(op, meta, h_cb, cb)
+
+ui_flagfunction           GUI dialog called by 'ui_qccriteria' for adding custom function calls to a Q/C criteria string
+                          syntax: ui_flagfunction
+
+ui_flagpicker             Adds a Q/C flag picker popupmenu and edit button to a GUI figure at a specified position
+                          syntax: ui_flagpicker(op, s, pos, h, cb, enable)
+
+ui_gce_register           GCE data download registration form dialog called by 'ui_search_data'
+                          syntax: ui_gce_register(op, cb)
+
+ui_importfilter           Filtered ASCII import dialog used by the GCE Data Toolbox.
+                          syntax: ui_importfilter(op, fn, pn, h_cb, cb)
+
+ui_interp_missing         GCE Data Toolbox dialog for filling in gaps in a data set using one-dimensional interpolation
+                          syntax: ui_interp_missing(op, s)
+
+ui_joindata               GUI dialog for joining columns in two GCE Data Structures together based on common values in one or more key columns
+                          syntax: ui_joindata(op, s0, s1, s1fname, h_fig, h_cb, cb, autodate)
+
+ui_manual_qc              Opens a GCE Data Structure in a data grid to allow data values and Q/C flags to be viewed and edited
+                          syntax: ui_manual_qc(op, s, cols, h, cb, colwid)
+
+ui_mapdata                Data mapping dialog for the GCE Data Toolbox
+                          syntax: ui_mapdata(op, s)
+
+ui_metastyle              GUI dialog for editing metadata styles used by the GCE Data Toolbox
+                          syntax: ui_metastyle(op, data)
+
+ui_multimerge             Dialog for merging multiple GCE Data Structures into a single structure
+                          syntax: ui_multimerge(op, loadpath)
+
+ui_normalizecols          GUI dialog for normalizing a data set by merging multiple related columns into parameter name/value columns
+                          syntax: ui_normalizecols(op, s)
+
+ui_num_replace            Dialog called by 'ui_editor' for searching and replacing numeric values in a GCE Data Structure
+                          syntax: ui_string_replace(op, s, col, h_cb, cb)
+
+ui_plotdata               GCE Data Toolbox data structure plotting dialog
+                          syntax: ui_plotdata(op, s)
+
+ui_plotgroups             Dialog for creating a series of line/scatter plots from a single data set split by values in a grouping column
+                          syntax: ui_plotgroups(op, s)
+
+ui_plotvertprofile        Dialog for generating a 3D contour plot of parameter vs distance and depth
+                          syntax: ui_plotvertprofile(op, s)
+
+ui_progressbar            Creates a graphical progress bar to illustrate the status of long-running processes
+                          syntax: ui_proressbar(op, data, title)
+
+ui_qccriteria             QA/QC criteria editor dialog called by 'ui_editor' and 'ui_template'
+                          syntax: ui_qccriteria(op, s, col, flagdefs, h_cb, cb)
+
+ui_querybuilder           GUI dialog for building row restriction queries to subselect data from a GCE Data Structure
+                          syntax: ui_querybuilder(op, val)
+
+ui_search_data            GCE Search Engine dialog for building and querying metadata search indices to identify and retrieve data sets
+                          syntax: ui_search_data(op, index)
+
+ui_sortcolumns            GUI dialog for sorting data columns in a GCE Data Structure
+                          syntax: ui_sortcolumns(op, s)
+
+ui_splitseries            GCE Data Toolbox dialog for splitting a compound data series based on values in a specified column
+                          syntax: ui_splitseries(op, s)
+
+ui_statreport             GCE Data Toolbox statistical report generator dialog
+                          syntax: ui_statreport(op, s, fn, pn)
+
+ui_string_replace         Dialog called by 'ui_editor' for searching and replace text values or flags in a GCE Data Structure
+                          syntax: ui_string_replace(op, s, col, target, h_cb, cb)
+
+ui_template               GUI dialog for editing metadata templates used by the GCE Data Toolbox
+                          syntax: ui_template(op, data)
+
+ui_text_prompt            Opens a dialog box to prompt for a character array
+                          syntax: ui_text_prompt(op, h_cb, cb, str, prompt, title, width)
+
+ui_title                  Dialog called by 'ui_editor' to update the title of a GCE Data Structure or editor window
+                          syntax: ui_title(op, s, h_cb, cb, caption, dlgtitle)
+
+ui_topbottom              GCE Data Toolbox dialog for extracting top and bottom data records from a vertical profile data set
+                          syntax: ui_topbottom(op, s)
+
+ui_unitconv               Unit conversion dialog called by 'ui_editor' (requires data file ui_editor.mat)
+                          syntax: ui_unitconv(op, s, col)
+
+ui_viewdocs               Displays documentation for the GCE Data Toolbox in a scrolling text box with selectable sections
+                          syntax: ui_viewdocs(op, fnc)
+
+ui_viewmeta               Displays various metadata components of a GCE Data Structure in a scrolling list box viewer
+                          syntax: ui_viewmetadata(s, style)
+
+ui_viewtext               Displays a string or cell array of strings in a scrolling list box viewer
+                          syntax: ui_viewtext(text, wrap, indent, titlestr, figsize, font)
+
+ui_visualqc               Dialog for assigning and clearing QC/QA flags visually by clicking on data points with the mouse.
+                          syntax: ui_visualqc(op, qc_data)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                      Database Toolbox Support Functions                                      
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+gce_fastinsert            Executes the MATLAB Database Toolbox 'fastinsert' function for selected columns of a GCE Data Structure
+                          syntax: msg = gce_fastinsert(s, conn, tablename, cols, fieldnames, maxrows)
+
+gce_insert                Executes the MATLAB Database Toolbox 'insert' function for selected columns of a GCE Data Structure
+                          syntax: msg = gce_insert(s, conn, tablename, cols, fieldnames, maxrows)
+
+null2emptystr             Replaces empty cells in a cell array with empty strings
+                          syntax: ar2 = null2emptystr(ar)
+
+null2nan                  Replaces empty cells in a cell array with NaN
+                          syntax: ar2 = null2nan(ar)
+
+sql2gceds                 Executes an SQL query on the specified data source and returns the results as a GCE Data Structure
+                          syntax: [s, msg, coltypes, values] = sql2gceds(conn, qry, template, autoclose, maxrows, debugfile)
+
+sql2struct                Executes an SQL statement on the specified data source and returns a multidimensional structure with field names
+                          syntax: [s, msg] = sql2struct(conn, qry, maxrows)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                       Plotting and Graphics Functions                                        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+addnote                   Adds an annotation to a plot and assigns the 'ButtonDownFcn' to 'editnote' for text editing and repositioning
+                          syntax: addnote(pos, str)
+
+dateplot2html             Generates an HTML page and image files, with optional hyperlinked thumbnails, to represent
+                          syntax: msg = dateplot2html(cols, plotwidth, thumbnails, interval, fn_plots, fn_html, pn, pagetitle, nav_html, h_fig, fmt)
+
+dateplot2template         Generates an HTML page and image files, with optional hyperlinked thumbnails, to represent
+                          syntax: msg = dateplot2template(fn_template, pn_template, cols, plotwidth, thumbnails, interval, fn_plots, fn_html, pn, h_fig, pagetitle, nav, fmt)
+
+dateplot2xml              Generates an XML page and image files to represent time series data plots for a specified interval
+                          syntax: msg = dateplot2xml(cols, plotwidth, thumbnails, interval, fn_plots, fn_xml, fn_index, pn, pagetitle, param, xsl, nav, fmt, h_fig)
+
+dateplots                 Generates individual date plots at the specified interval from a standard date plot and saves
+                          syntax: [msg, filenames, dateranges, thumbs] = dateplots(interval, fn, pn, format, resolution, thumbnailss, h)
+
+exportfig                 Exports the current figure in the specified format with uicontrol printing suppressed, prompting for filename and path
+                          syntax: fqfn = exportfig(option, h_fig, fn, pn)
+
+get_plot_xrange           Adds controls to a data plot for interactively selecting an X-axis range and returning data to a calling function
+                          syntax: get_plot_xrange(h_fig, h_cb, cb, xrange, offset)
+
+get_plot_yrange           Adds controls to a data plot for interactively selecting an X-axis range and returning data to a calling function
+                          syntax: get_plot_yrange(h_fig, h_cb, cb, yrange, offset)
+
+merge_dateplots_xml       Generates an HTML table of date plot thumbnails based on multiple sets of existing plots in a specified directory
+                          syntax: msg = merge_dateplots_xml(prefix_array, xml_array, caption_array, nav_array, fn_xml, pn, pagetitle, xsl, nav, html, fmt)
+
+monthplots                Generates monthly date plots for a multiple parameters in a GCE data structure,
+                          syntax: msg = monthplots(s, parms, nullflags, pn, colors, markers, linestyles, fillmarkers, markersize, yaxlims)
+
+monthplotsfig             Generates individual monthly date plots from a standard date plot and saves each plot as a .png file
+                          syntax: msg = monthplotsfig(fn, pn, h)
+
+monthticks                Sets X-axis limits and ticks to even month intervals in a specified date label format for a time-series plot
+                          syntax: monthticks(fmt, months, h_ax)
+
+multi_dateplots           Generates individual plot files for selected columns in a GCE Data Structure
+                          syntax: [fn_array, msg] = multi_dateplots(s, ycols, fn_base, pn, datecol, daterange, datetickfmt, labels, colors, markers, linestyles, fillmarkers, markersize, figsize, fmt)
+
+openfigfile               Opens a MATLAB .fig file, prompting for the filename if omitted
+                          syntax: openfilefile(fn, pn)
+
+plot_vertprofile          Creates a vertical profile plot (i.e. filled contours on a depth vs distance plot)
+                          syntax: [msg, c, hc, hd] = plot_vertprofile(distance, depth, param, interval, bottom, titles, cmap, mindepth, backgroundcolor, showpoints)
+
+plotbuttons               Adds a custom toolbar to the bottom of the current plot, providing constrained zoom, pan and date axis
+                          syntax: adds axis manipulation buttons to a Matlab figure
+
+plotdata                  Generates 2D symbol/line plots of values in a GCE-LTER data structure
+                          syntax: [msg, h_fig] = plotdata(s, xcol, ycols, colors, markers, linestyles, fillmarkers, markersize, scale, rotateaxis, sortx, dateaxis, flags, deblank, axlims, visible)
+
+plotgroups                Creates multiple line/scatter plots for values in two columns of a GCE Data Structure,
+                          syntax: [msg, h_fig] = plotgroups(s, xcol, ycol, groupcols, maxgps, colors, markers, styles, fillmarkers, markersize, rotateaxis, scale, flags, visible)
+
+plothistogram             Plots a frequency histogram for the indicated column in a GCE Data Structure
+                          syntax: plothist(s, columns, bins, flagopt)
+
+plotlabels                Adds the specified title and axis label strings to the current plot
+                          syntax: plotlabels(titlestr, xstr, ystr, zstr, interpreter, h_ax)
+
+plotmenu                  Adds a menu item to a MATLAB figure containing commands for exporting figures in
+                          syntax: h_menu = plotmenu(label, h_fig)
+
+plotresize                Toggles plot select/move/resize for plot axes on a figure
+                          syntax: plotresize(h)
+
+plotwidgets               Creates or removes standard GCE plot menus and toolbars from a MATLAB figure
+                          syntax: plotwidgets(op, h_fig)
+
+plotwind                  Generates a standard 2-axis wind plot from a GCE Data Structure, with wind speed
+                          syntax: [msg, h_fig] = plotwind(s, col_date, col_speed, col_dir, maxspeed, daterange, deblank, showflags, linespec_speed, linespec_dir, markersize_speed, visible)
+
+textedit                  Text editing dialog box, to be used as a callback function associated with text objects.
+                          syntax: textedit(op)
+
+yearplotsfig              Generates individual annual date plots from a standard date plot and saves each plot as a .png file
+                          syntax: msg = yearplotsfig(fn, pn, h)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                      Data Import and Parsing Functions                                       
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+parse_gce_syntax          Parses syntax and parameter information from GCE Data Toolbox function help text
+                          syntax: [syntax, fnc_desc, fnc_help, parms, modified] = parse_gce_syntax(fnc)
+
+parse_template_qcrules    Parses Q/C rules in the GCE Data Toolbox metadata templates library and lists rules by variable
+                          syntax: qcrules = parse_template_qcrules(templates)
+
+fetch_climdb_data         Fetches data for a specified site and station from the ClimDB/HydroDB web site (requires networking features in MATLAB 6.5/R13 or higher)
+                          syntax: [s, msg] = fetch_climdb_data(site, station, parms, username, userorg, userpurpose, date_min, date_max, template, silent, savetemp, pn, base_url)
+
+fetch_climdb_info         Retrieves updated status information on sites, stations and variables from the LTER ClimDB/HyroDB web site
+                          syntax: [s_sites, s_stations, s_variables, msg] = fetch_climdb_info(contributors, baseurl, pn)
+
+fetch_data_turbine        Retrieves channel data from a Data Turbine source to create a GCE Data Structure
+                          syntax: [s, msg] = fetch_data_turbine(server, source, startdate, time_offset, template, maxdays, workflow)
+
+fetch_ncdc_ghcnd          Retrieves historic climate data from the NOAA NCDC GHCN FTP site for a specified station
+                          syntax: [s, msg, s_raw] = fetch_ncdc_ghcnd(station, tempplate, datestart, dateend, silent, deleteopt, baseurl)
+
+fetch_noaa_hads           Retrieves data arrays from the NOAA HADS NESDIS data server and returns a GCE data structure
+                          syntax: [s, msg] = fetch_noaa_hads(nesdis, days, template, deletetemp, trim_partial, max_trim, pn_temp, fn_temp, baseurl)
+
+fetch_usgs                Fetches data from the USGS NWIS web site for the specified station and time period
+                          syntax: [s, msg] = fetch_usgs(stationid, datatype, days, template, pn, fn, clear_provisional, deleteopt, baseurl, baseurl2)
+
+fetch_usgs_dates          Fetches data from the USGS NWIS web site for the specified station and time period
+                          syntax: [s, msg] = fetch_usgs_dates(stationid, datatype, begin_date, end_date, template, pn, fn, clear_provisional, deleteopt, baseurl, baseurl2)
+
+fetch_usgs_inventory      Fetches a USGS monitoring site inventory report and generates a USGS stations dataset
+                          syntax: [s, msg, url] = fetch_usgs_inventory(state, datatypes, bbox, fn, pn, url_base)
+
+fetch_usgs_stats          Fetches long-term discharge statistics for a list of USGS gauging stations
+                          syntax: [s, msg] = fetch_usgs_stats(stations, labels, pn, maxyears)
+
+imp_aquatroll             Imports data from a GCE Aqua TROLL 200 groundwater data logger
+                          syntax: [s, msg] = imp_aquatroll(fn, pn, template)
+
+imp_ascii                 Parses data from a delimitted text file to create a GCE Data Structure
+                          syntax: [data, msg] = imp_ascii(fn, pn, title, template, fstr, colnames, headerlines, missingchars, delimiter)
+
+imp_campbell_toa5         Imports data from a Campbell Scientific Instruments TOA5 ASCII file to create a GCE Data Structure
+                          syntax: [s, msg] = imp_campbell_toa5(fn, pn, template, serial_date, timezone, workflow)
+
+imp_castaway_ctd          Parses and concatenates cast records from an OSIL Castaway CTD instrument
+                          syntax: [s, msg] = imp_castaway_ctd(fn, pn, template, castfile)
+
+imp_csi_array             Imports an array from a Campbell Scientific Instruments array-based data logger file
+                          syntax: [s, msg] = imp_csi_array(fn, pn, array, template)
+
+imp_datastruct            Retrieves a GCE Data Structure from a MATLAB binary file
+                          syntax: s = imp_datastruct(fn, pn)
+
+imp_filter                Imports data from a delimited ASCII file using a specified format string and list of
+                          syntax: [data, msg] = imp_filter(fn, pn, formatstr, colnames, headerlines, missingchar, template, title)
+
+imp_hobo_tidbit           Imports data from a Hobo Tidbit temperature logger exported in ASCII boxcar format
+                          syntax: [s, msg] = imp_hobo_tidbit(fn, pn, template, site, location)
+
+imp_hydrolab              Import filter for GCE Hydrolab groundwater data logger files
+                          syntax: [s, msg] = imp_hydrolab(fn, pn, template)
+
+imp_matlab                Reads selected variables in a MATLAB binary file or the base worskspace to form a GCE Data Structure.
+                          syntax: [s, msg] = imp_matlab(source, pn, varlist, template)
+
+imp_minitroll             Import filter for GCE In-Situ MiniTroll water level loggers
+                          syntax: [s, msg] = imp_minitroll(fn, pn, template)
+
+imp_ncdc_ghcnd            Imports climate data from a NCDC Global Historic Climate Network daily summary file to create a GCE Data Structure
+                          syntax: [s, msg, s_raw] = imp_ncdc_ghcnd(fn, pn, template, datestart, dateend, silent, deleteopt)
+
+imp_ncdc_psdi             Parses NCDC Palmer Drought Severity Index from http://www1.ncdc.noaa.gov/pub/data/cirs/climdiv/
+                          syntax: [s, msg] = imp_ncdc_psdi(fn, pn, template, title)
+
+imp_nerr_cdmo             Imports CSV files downloaded from the National Estuarine Research Reserve CDMO web site
+                          syntax: [s, msg] = imp_nerr_cdmo(fn, pn, template, title, deletetemp)
+
+imp_schlumberger          Import filter for GCE Schlumberger CTD-Diver or Cera-Diver groundwater data logger files
+                          syntax: [s, msg] = imp_schlumberger(fn, pn, template, workflow)
+
+imp_seaphox               Import filter for SeapHOx logger files
+                          syntax: [s, msg] = imp_seaphox(fn, pn, template, title)
+
+imp_struct                Imports a MATLAB structure containing matching arrays or scalar values to a GCE Data Structure
+                          syntax: [s2, msg, badfields] = imp_struct(source, pn, template, fields)
+
+imp_usgs_stations         Imports a USGS NWIS station description file generated by 'fetch_usgs_inventory'
+                          syntax: [s, msg] = imp_usgs_stations(fn, pn, template, title)
+
+parse_37sm                Parses a processed data file (.asc) from a Seabird Electronics 37-SM Microcat
+                          syntax: [data, colnames, site, bottomdep, hdr] = parse_37sm(fn, pn, calc_depth, lat, fn2, pn2)
+
+parse_climdb_data         Parses tab-delimited data retrieved from the LTER ClimDB/HydroDB web application to create a data structure
+                          syntax: [s, msg] = parse_climdb_data(fn, pn, template, savetemp)
+
+parse_noaa_hads           Parses data arrays from a NOAA HADS NESDIS file to generate a GCE Data Structure
+                          syntax: [s, msg] = parse_noaa_hads(fn, pn, template, trim_partial, max_trim)
+
+parse_seabird             Parses data and header metadata from processed Sea-Bird CTD data files and returns a GCE data structure
+                          syntax: [s, msg] = parse_seabird(fn, pn, template, cruise)
+
+parse_usgs                Parses tab-delimited real-time or daily data obtained from the USGS National Water Information System
+                          syntax: [data, msg] = parse_usgs(fn, pn, titlestr, template, timezone, flag_provisional, clear_provisional)
+
+fetch_itis                Retrieves taxonomic information from ITIS for a scientific name, common name or TSN record
+                          syntax: taxa = fetch_itis(searchtype, searchtext, parsetaxa, pn)
+
+parse_endnote             Parses bibliographic information from an EndNote export file to create a structure
+                          syntax: [refs, Ibad, Iunmatched, unmatched] = parse_endnote(fn, pn)
+
+parse_gps                 Parses latitude and longitude from formatted GPS data strings
+                          syntax: [lat, lon] = parse_gps(gps, format)
+
+parse_cruise_log          Parses information for a specified cast in a cruise log file to supplement information in a CTD data set
+                          syntax: [s2, msg] = parse_cruise_log(s, castcol, logfile, logfields, template, pos)
+
+fetch_eml_data            Retrieves text data tables described in an EML metadata document and returns a structure containing parsed data
+                          syntax: [s, msg] = fetch_eml_data(url, pn, xsl, cachedata, username, password, entities)
+
+fetch_eml_entities        Retrieves a list of dataTable entities described in an EML metadata document as a cell array
+                          syntax: [entities, entitydesc] = fetch_eml_entities(url, pn, xsl, username, password)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                            Data Export Functions                                             
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+exp_ascii                 Exports the contents of a GCE Data Structure or GCE Stats Structure as a delimited text file
+                          syntax: msg = exp_ascii(s, fmt, fn, pn, rpttitle, hdropt, flagopt, metastyle, leader, rownumbers, missingchar, delim, groupcol, appendopt, terminator, extensionopt)
+
+exp_climdb                Exports climate and/or hydrographic monitoring data in LTER ClimDB harvester format.
+                          syntax: [msg, status, s_mod] = exp_climdb(s, site, station, fn, pn, append, pct_missing)
+
+exp_header                Generates an ASCII import file header from a GCE Data Structure
+                          syntax: msg = exp_header(s, fn, pn, dataopt, flagopt, delim)
+
+exp_matlab                Exports the contents of a GCE Data Structure as a standard MATLAB data file containing data and metadata as variables
+                          syntax: msg = exp_matlab(s, fn, pn, filetype, metastyle, flagopt, flagcols, varname)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                        Data Parsing Support Functions                                        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+batch_import              Batch processes raw data files in a directory using a specified GCE Data Toolbox import filter function
+                          syntax: [msg, filelist, badfiles] = batch_import(filtname, filemask, pn1, pn2, arg1, arg2, arg3, arg4, arg5, arg6, silent)
+
+csi2struct                Parses mixed data arrays from a Campbell Scientific Instruments array-based datalogger file
+                          syntax: msg = csi2struct(fn, pn, template, pn2, missingval, year, timezone, year_name, yearday_name, time_name)
+
+parseheader               Parses documentation and attribute descriptor metadata from a specifically-formatted text file header
+                          syntax: [hdrs, hdrrows, msg] = parseheader(fn, pn, titlestr, metaonly)
+
+split_csi                 Splits Campbell Scientific datalogger files into separate files for each
+                          syntax: numrows = split_csi(arrays, fn, pn)
+
+split_csi_arrays          Splits processed arrays from a Campbell Scientific Instruments array-based data logger file
+                          syntax: [msg, filelist, badfiles] = split_csi_arrays(fn, pn, pn2, template)
+
+update_usgs_stations      Updates the USGS station list by querying the NWIS site inventory
+                          syntax: [s, msg] = update_usgs_stations(datatypes)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                        Quality Control Flag Functions                                        
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+flag_locks                Locks or unlocks Q/C flag criteria for specified columns in a GCE-LTER data structure
+                          syntax: [s2, msg] = flag_locks(s, lock_option, cols)
+
+flag_replace              Performs string replacement for flags of one or more columns in a GCE Data Structure
+                          syntax: [s2, msg] = flag_replace(s, cols, oldstring, newstring, matchtype, caseopt)
+
+flags2cols                Converts Q/C flags in a GCE Data Structure to coded string or integer columns in the data set
+                          syntax: [s2, msg] = flags2cols(s, flagcols, clearopt, missing, pos, encode, prefix, firstflag)
+
+flags2cols_selected       Converts selected Q/C flag information in specified columns of a GCE Data Structure to coded string columns
+                          syntax: [s2, msg] = flags2cols_selected(s, flags, cols, encode, emptycols, prefix)
+
+flag_ctd_soak_period      Returns an index indicating records collected during the pre-deployment soaking period of a CTD cast
+                          syntax: Iflag = flag_ctd_soak_period(vals, windowsize, maxdepth)
+
+flag_daterange            Returns an index of date/time values that are within a specified time of day for time-based QA/QC flagging
+                          syntax: Iflag = flag_daterange(datetime, daterange, dateformat)
+
+flag_inarray              Returns an index of numeric values that are present in a specified array
+                          syntax: Iflag = flag_inarray(vals, valuearray, tolerance)
+
+flag_inlist               Returns an index of string values that are present in a specified list array or file-based list
+                          syntax: Iflag = flag_inlist(vals, valuelist, caseopt)
+
+flag_locationcoords       Returns an index of location codes with coordinates that differ by more the specified tolerance from reference coordinates
+                          syntax: Iflag = flag_locationcoords(location, longitude, latitude, tolerance, caseoption, ref_file)
+
+flag_locationnames        Returns an index of location code values that are not present in the geographic database 'geo_locations.mat'
+                          syntax: Iflag = flag_locationnames(locations, caseopt, emptyopt)
+
+flag_notinarray           Returns an index of numeric values that are not present in a specified array
+                          syntax: Iflag = flag_notinarray(vals, valuearray, tolerance)
+
+flag_notinlist            Returns an index of string values that are not present in a specified list array or file-based list
+                          syntax: Iflag = flag_notinlist(vals, valuelist, caseopt, emptyopt)
+
+flag_novaluechange        Returns an index of values that do not differ from the mean of preceeding values by the specified limits
+                          syntax: Iflag = flag_novaluechange(vals, lowlimit, highlimit, framesize, iterations)
+
+flag_nsigma               Returns an index of values above or below the mean of preceeding values by the specified number of standard deviations
+                          syntax: Iflag = flag_nsigma(vals, lowlimit, highlimit, framesize, iterations)
+
+flag_o2saturation         Returns an index of dissolved oxygen concentration values that are above or below specified saturation limits
+                          syntax: Iflag = flag_o2saturation(o2_conc, temp, sal, maxsat, minsat, units)
+
+flag_percentchange        Returns an index of values above or below the mean of preceeding values by the specified percentages
+                          syntax: Iflag = flag_percentchange(vals, lowlimit, highlimit, framesize, iterations)
+
+flag_sitenames            Returns an index of site code values that are not present in the geographic database 'geo_polygons.mat'
+                          syntax: Iflag = flag_sitenames(sitecodes, caseopt, emptyopt)
+
+flag_timeofday            Returns an index of date/time values that are within a specified time of day for time-based QA/QC flagging
+                          syntax: Iflag = flag_timeofday(datetime, timerange, dateformat)
+
+flag_total                Returns an index of values that exceed a limit when totalled with a specified number of preceding values
+                          syntax: Iflag = flag_total(vals, highlimit, framesize, iterations)
+
+flag_valuechange          Returns an index of values above or below the mean of preceeding values by the specified limits
+                          syntax: Iflag = flag_valuechange(vals, lowlimit, highlimit, framesize, iterations)
+
+flag_well_pumping         Returns an index indicating records collected during and following well pumping events based on negative spikes in pressure
+                          syntax: Iflag = flag_well_pumping(vals, windowsize, threshold)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Supporting Command-line Toolbox Functions and Miscellaneous Utilities                     
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+documentation.pdf         Miscellaneous support file
+
+documentation.rtf         Miscellaneous support file
+
+gce_datatools             Displays the list of functions comprising the GCE Data Toolbox for Matlab
+                          syntax: gce_datatools(gui)
+
+gce_homepath              Returns the base pathname of the current GCE Toolbox instance, optionally changing the working directory
+                          syntax: pn = gce_homepath(cd_option)
+
+license.txt               Miscellaneous support file
+
+localpaths.txt            Miscellaneous support file
+
+restart                   Opens the GCE Data Toolbox startup screen without modifying the MATLAB search path
+                          syntax: unspecified
+
+angleavg                  Calculates an average for angular data using a unit vector approach based on the formula:
+                          syntax: ad = angleavg(d, units, zerotol)
+
+batch_transform_xml       Performs batch XSL tranformation of xml documents in a directory
+                          syntax: msg = batch_transform_xml(pn, filespec, xsl, extension)
+
+cell2commas               Concatenates elements in a cell array of strings to form a single comma-separated character array.
+                          syntax: str = cell2commas(c, opt)
+
+cell2pipes                Concatenates elements in a cell array of strings to form a single character array separated with padding spaces
+                          syntax: str = cell2pipes(c, number, prefix, indent, compact)
+
+cell2textfile             Exports contents of a cell array of scalar character or numeric values to a text file
+                          syntax: status = cell2textfile(ar, fn, digits)
+
+centerstr                 Centers two character arrays with respect to eachother
+                          syntax: str3 = centerstr(str1, str2)
+
+clean_endnote             Cleans up author lists and keywords with hard returns and missing identifiers in an Endnote Export file
+                          syntax: clean_endnote(fn, fn2, pn)
+
+clean_path                Removes a terminal file separator from a path string when present for generating fully-qualified file paths
+                          syntax: pn2 = clean_path(pn)
+
+clean_str                 Converts a single or multi-line character array to a string with all insignificant whitespace removed
+                          syntax: str2 = clean_str(str)
+
+clipplottext              Clips text on a 2D plot by toggling the visibility on or off based on axis position
+                          syntax: clipplottext
+
+compress_str              Removes all blanks from a character array or cell array of strings
+                          syntax: str2 = compress_str(str)
+
+concatcellcols            Concatenates individual cells on each row in a cell array of strings to form a single column array
+                          syntax: ar2 = concatcellcols(ar, spacer, skipempty)
+
+cond2salinity             Calculates salinity and sigma-t from water depth, temperature and conductivity measurements
+                          syntax: [sal, sigmat] = cond2salinity(depth, temp, cond);
+
+cond2spcond               Calculates specific conductance at 25C from conductivity and temperature
+                          syntax: spcond = cond2spcond(conductivity, temperature, coeff)
+
+conf_limits               Calculates lower and upper confidence limits for an array of means and standard deviations
+                          syntax: [lcl, ucl] = conf_limits(mn, sd, n, pct)
+
+confirmdlg                Confirmation dialog that executes a 'callback' statement if the 'OK' button is pressed
+                          syntax: confirmdlg(op, querystr, callback)
+
+contains                  Returns a logical index of strings in an array that contain the specified substring
+                          syntax: Imatch = contains(vals, pattern, caseopt)
+
+csi_integer2time          Converts Campbell Scientific Instruments min/max times in hhmm integer format to hh:mm string format
+                          syntax: str = csi_time2integer(val, fmt)
+
+csi_time2integer          Converts Campbell Scientific Instruments min/max times in h:m format to hhmm integer format
+                          syntax: val = csi_time2integer(str)
+
+date2monthyear            Converts a MATLAB serial date to Month-Year format (e.g. January 2004)
+                          syntax: str = date2monthyear(d)
+
+date2weekday              Calculates numerical week day for any date, based on a specified first day of the week
+                          syntax: wd = date2weekday(dt)
+
+date2weeknumber           Calculates week numbers for an array of serial dates according to various calendar standards
+                          syntax: [week, year] = date2weeknumber(dt, standard)
+
+date2yearday              Calculates year day from a vector of MATLAB serial dates or cell array of valid date strings
+                          syntax: [yearday, year] = date2yearday(d, roundopt)
+
+dateaxis                  Refreshes date ticks on the x-axis of the current plot
+                          syntax: dateaxis
+
+datecnv                   Converts numerical dates between various software conventions
+                          syntax: date_out = datecnv(dateval, opt)
+
+datenum_iso               Generates MATLAB serial dates from ISO date strings in the form 'yyyy-mm-dd HH:MM:SS' or 'yyyymmddTHHMMSS'
+                          syntax: [dt, msg] = datenum_iso(str, format)
+
+datestr2num               Efficiently converts a cell array of date strings to MATLAB serial dates checking for empty strings and duplicates
+                          syntax: dt = datestr2num(str, fmt)
+
+ddeg2dms                  Converts geographic coordinates from decimal degrees format to degrees, minutes, seconds
+                          syntax: dms = ddeg2dms(ddeg)
+
+dec_places                Determines the maximum number of used decimal places in a floating-point array
+                          syntax: prec = dec_places(num, maxprec)
+
+deg2utm                   Converts geographic coordinates from lat/lon degrees to UTM using the specified ellipsoid datum
+                          syntax: [zone, utm_east, utm_north, hem, errormsg] = deg2utm(lon, lat, datum)
+
+deg2utmzone               Converts geographic coordinates from lat/lon degrees to UTM using the specified ellipsoid datum
+                          syntax: [zone, utm_east, utm_north, hem, errormsg] = deg2utmzone(lon, lat, datum, zone)
+
+depth2tidestage           Determines tide stage and sequential tide bin from a time series of depth or pressure data using tide_high_low()
+                          syntax: [stage, tidebin, t_high, t_low, a_high, a_low] = depth2tidestage(dt, depth, timestep, polyorder)
+
+editnote                  Dialog for adding or editing text annotations on figures. Can be called without arguments to
+                          syntax: editnote(op, h)
+
+endnote2fastlane          Parses an Endnote export file to produce a tab-delimited file for entering pubs into Fastlane
+                          syntax: msg = endnote2fastlane(pn, fn_endnote, fn_parsed)
+
+file2listbox              Loads an ASCII file and displays it in a uicontrol listbox
+                          syntax: file2listbox(h_listbox, fn, pn)
+
+fill_date_tokens          Replaces date/time field tokens in square brackets with current date/time information
+                          syntax: str2 = fill_date_tokens(str)
+
+geo_simplify              Simplifies a geographic polygon by reducing the number of lon/lat vertices
+                          syntax: [olon, olat] = geo_simplify(lon, lat, nmax, tolerance)
+
+get_file                  Downloads a file from an HTTP, HTTPS, FTP or file system url and returns a fully qualified local filename
+                          syntax: [fqfn, msg] = get_eml_file(url, fn, pn, username, password)
+
+get_polygon               Builds an array of positions defining a closed polygon of specified shape
+                          syntax: [pos, h_line] = get_polygon(shape, colorval)
+
+get_utc_offset            Calculates the offset of the computer clock from UTC due to time zone settings
+                          syntax: offset = get_utc_offset()
+
+htmltable2cell            Parses table structures from HTML text to return a cell array of contents
+                          syntax: tablerows = htmltable2cell(html, emptycells, urls, base_url)
+
+inarray                   Matches values in an array to elements in a specified list of values and returns a logical index
+                          syntax: Imatch = inarray(vals, valuearray, tolerance)
+
+inlist                    Matches strings in an array to elements in a specified list and returns a logical index
+                          syntax: Imatch = inlist(vals, valuelist, caseopt)
+
+isnull                    Returns a logical index of null values in any array type (numeric, character, cell array)
+                          syntax: Inull = isnull(values)
+
+list_pasta_package_dois   Lists DOIs for specified data packages in the LTER data portal
+                          syntax: s = list_pasta_package_dois(scopes, identifiers, revisions, baseurl)
+
+list_pasta_packages       Lists package identifiers and latest revisions for data packages in the LTER data portal
+                          syntax: ar = list_pasta_packages(scope, baseurl)
+
+listbox2file              Saves the string contents of a listbox uicontrol as an ASCII text file
+                          syntax: listbox2file(h_listbox, fn, pn)
+
+listdialog                Customized variant of the MATLAB 'listdlg' function
+                          syntax: I_sel = listdialog(varargin)
+
+messagebox                Generates a multi-line message box with a user-specified callback and optional cancel button
+                          syntax: messagebox(op, message, callback, dialogtitle, bgcolor, showcancel)
+
+mfilecatalog              Generates a catalog of mfiles in the specified directory as an ASCII file.
+                          syntax: mfilecatalog(filespec, pn1, fn, pn2)
+
+mlversion                 Returns the version of MATLAB running in numerical form ([majorversion].[minorversion])
+                          syntax: num = mlversion
+
+neststruct                Nests a child structure in a specified field of a parent structure based on matching values in a shared key field
+                          syntax: s = neststruct(s_parent, s_child, keyfield, fieldname)
+
+no_nan                    Returns a numeric array stripped of NaN and other specified values plus an index of valid values
+                          syntax: [a2, Ivalid] = no_nan(a, missingvals)
+
+o2_airsat                 Calculates dissolved oxygen saturation as a function of temperature and salinity at sea-level
+                          syntax: [o2_sat, msg] = o2_saturation(T, S, units)
+
+o2_saturation             Calculates dissolved oxygen saturation as a function of temperature and salinity at sea-level
+                          syntax: [sat, o2_sat, msg] = o2_saturation(o2_conc, T, S, units)
+
+parent_figure             Determines the parent figure for any uicontrol handle (returns empty matrix
+                          syntax: h_fig = parent_figure(h)
+
+pressure2depth            Calculates water depth based on water pressure and latitude using a UNESCO algorithm
+                          syntax: depth = pressure2depth(pressure, latitude, p_units)
+
+recurse_files             Recursively builds a list of all files in a directory and subdirectories matching a filename pattern
+                          syntax: filelist = recurse_files(pn, filemask, filemask_exclude)
+
+rename_struct_field       Renames a structure field without re-ordering the existing fields
+                          syntax: s2 = rename_struct_field(s, fld_old, fld_new)
+
+roundsig                  Rounds numbers to the indicated significant digits using the method specified
+                          syntax: x2 = roundsig(x, sigdig, method)
+
+running_mean              Calculates the running mean and other statistics of an array over the specified number of points
+                          syntax: [mn, sd, num] = running_mean(vals, points, ignore_nan, direction)
+
+salinity2spcond           Calculates specific conductance at 25C from salinity measurements
+                          syntax: spcond = salinity2spcond(salinity)
+
+setpath                   Adds the current directory to the Matlab path
+                          syntax: setpath(pos)
+
+spcond2salinity           Calculates salinity from specific conductance at 25C
+                          syntax: salinity = spcond2salinity(conductivity)
+
+splitcodes                Parses a delimited string containing code name, code value pairs and returns matching name and value arrays
+                          syntax: [codenames, codevalues] = splitcodes(str, delim)
+
+splitstr                  Splits a character array into elements based on positions of a specified delimiter,
+                          syntax: ar = splitstr(str, delim, clearopt, trimopt)
+
+splitstr_fast             Speed-optimized version of the 'splitstr' function for deblanked, single-line character arrays
+                          syntax: ar = splitstr_fast(str, delim)
+
+splitstr_multi            Splits strings in a cell array into sub-arrays based on a delimiter character
+                          syntax: ar = splitstr_multi(str, delim, clearopt, trimopt)
+
+t_value_onetail           Returns the area under the Student t distribution (single side) for a given alpha and degrees of freedom
+                          syntax: tval = t_value_onetail(alpha, df)
+
+textfile2cell             Reads the specified text file, and returns a cell array of strings with lines optionally word-wrapped
+                          syntax: str = textfile2cell(fn, pn, emptylines, wrap, indent, trim)
+
+textfile2str              Reads the specified text file, and returns a string (i.e. 1-row character array)
+                          syntax: str = textfile2cell(fn, pn, emptylines, trim)
+
+tide_high_low             Returns interpolated times and amplitudes of high and low tides based on a time-series of depth measurements
+                          syntax: [t_high, t_low, a_high, a_low] = tide_high_low(dt, depth, timestep, polyorder)
+
+trimstr                   Trims leading and trailing blanks from a single string or cell array of strings
+                          syntax: str2 = trimstr(str)
+
+urlread2                  URLREAD Returns the contents of a URL as a string.
+                          syntax: unspecified
+
+urlwrite2                 URLWRITE Save the contents of a URL to a file.
+                          syntax: unspecified
+
+utm2deg                   Converts geographic coordinates from UTM to decimal degrees (lon,lat)
+                          syntax: [lon, lat, errormsg] = utm2deg(zone, utm_east, utm_north, hem, datum)
+
+viewtext                  Displays the contents of a character array or cell array of strings in a GUI text viewer using 'ui_viewtext'
+                          syntax: viewtext(str, wrap, indent, titlestr)
+
+wordwrap                  Wraps lines of text at word breaks with optional indentation
+                          syntax: str2 = wordwrap(str, col, indent, fmt)
+
+yearday2date              Converts Julian Day/Year Day to a MATLAB serial date
+                          syntax: d = yearday2date(yearday, year, offset)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                         XML Functions and Utilities                                          
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+dataset_schema.xsd        Miscellaneous support file
+
+eml2gce                   Converts EML-described data retrieved using 'fetch_eml_data' to an array of GCE Data Structures
+                          syntax: [s_array, msg] = eml2gce(s_raw, fn, pn)
+
+escape_chars              Escapes specified characters in a string to prevent XML/HTML validation errors
+                          syntax: str2 = escape_chars(str, charlist)
+
+evalXpath                 Evaluates xpath expressions on an XML document nodeset and returns an array of text contents
+                          syntax: c = evalXpath(xml, xpaths)
+
+gceds2eml                 Generates an Ecological Metadata Language 2.1.1 document and corresponding ASCII text file from a GCE Data Structure
+                          syntax: [xml, s_eml, msg] = gceds2eml(s, packageid, fn, fileurl, entityname, fmt, datefmt, hdropt, flagopt, misschar, terminator, mapunits, s_access)
+
+gceds2eml_attributes      Generates Ecological Metadata Language 2.1.1 attributeList metadata from a GCE Data Structure
+                          syntax: [s_attr, s_stmml, msg] = gceds2eml_attributes(s_meta, misschar, mapunits, emlunits)
+
+gceds2eml_table           Generates an Ecological Metadata Language 2.1.1 dataTable tree, STMML tree and corresponding ASCII text file
+                          syntax: [s_table, s_stmml, s_meta, msg] = gceds2eml_table(s, fn, fileurl, entityname, fmt, datefmt, hdropt, flagopt, misschar, terminator, mapunits)
+
+gceds2html                Generates HTML markup to display selected columns of a GCE Data Structure in a web table
+                          syntax: [str, msg] = gceds2html(s, cols, headings, orientation, css_id, html, css_url, fn)
+
+gceds2kml                 Creates a Google Earth KML file from a GCE Data Structure containing latitude and longitude columns
+                          syntax: msg = gceds2kml(s, fn, col_lat, col_lon, col_labels, col_balloons, headings, docname, styles, col_styles)
+
+gceds2kml_polylines       Creates a Google Earth KML file with polylines and placemarks from a GCE Data Structure containing latitude and longitude columns
+                          syntax: msg = gceds2kml_polylines(s, fn, col_lat, col_lon, col_labels, col_balloons, col_groups, headings, docname, styles, col_styles)
+
+gceds2xml                 Generates HTML markup to display selected columns of a GCE Data Structure in a web table
+                          syntax: [xml, msg] = gceds2xml(s, cols, headings, xsl_url, fn)
+
+get_eml_file              Fetches an EML document from an HTTP, HTTPS, FTP or file system url and returns a fully qualified local filename
+                          syntax: [fqfn, packageId, msg] = get_eml_file(url, pn, username, password)
+
+parseXML                  PARSEXML Convert XML file to a MATLAB structure.
+                          syntax: unspecified
+
+struct2xml                Generates an xml fragment from a uni- or multi-dimensional structure
+                          syntax: xmlstr = struct2xml(s, outertag, emptyfields, wrapcolumn, indent, leftmargin)
+
+struct2xml_attrib         Generates an xml fragment with attributes from a uni- or multi-dimensional structure
+                          syntax: xmlstr = struct2xml_attrib(s, outertag, emptyfields, wrapcolumn, indent, leftmargin, attr)
+
+thumbnail_index_xml       Generates an XML index of images and thumbnails for web display
+                          syntax: msg = thumbnail_index_xml(pn, filemask_images, thumbnail_suffix, nav, caption, pagetitle, xsl, fn_index, numcols, html)
+
+xml2file                  Writes an xml file to disk using an xml string generated by 'struct2xml'
+                          syntax: msg = xml2file(xml, root, indent, fn, pn, xsl_url, encoding)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                Mapping and Geographic Functions and Utilities                                
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+addmap                    Adds a map to the current figure and generates a continuous line plot of the coordinates in 'map'.
+                          syntax: h_ax = addmap(map, bounds, mapedge, mapfill, background, title)
+
+addnote                   Adds an annotation to a plot and assigns the 'ButtonDownFcn' to 'editnote' for text editing and repositioning
+                          syntax: addnote(pos, str)
+
+addsites                  Adds site boundary polygon data to a map plot for use with 'poly_mgr'
+                          syntax: addsites(polydata, h)
+
+axes2pixels               Returns the positions of a figure and its current axis object in pixels and data units
+                          syntax: [fig_pixels, axes_pixels, fig_data, axes_data] = axes2pixels(h_fig)
+
+center_fig                Centers the specified figure on the computer screen
+                          syntax: center_fig(h, resize)
+
+centerpoly                Centers the polygon represented by handle 'h' over the coordinates
+                          syntax: centerpoly(h, x, y)
+
+circle                    Generates coordinates for closed circular polygons at specified x/y coorindates and radius
+                          syntax: [x, y] = circle(x0, y0, r, pts)
+
+compass_rose              Adds a standard 8-point compass rose to a MATLAB figure
+                          syntax: [h_patch, h_text] = compass_rose(x, y, font, fontsize, width, height, h_fig)
+
+coordstr2ddeg             Converts an array of geographic coordinate strings to decimal degrees, stripping any non-numeric characters
+                          syntax: coord = coordstr2ddeg(coordstr, hem)
+
+copylines                 Copies Matlab line objects from the current axis of one figure to another
+                          syntax: copylines(h1, h2)
+
+copypointlabels           Copies point labels on a GCE map figure to another map figure
+                          syntax: copypointlabels(h_fig1, h_fig2, tag)
+
+corner_coord              Returns an array of SW and NE corner coordinates for a set of axis limits in degrees and utm
+                          syntax: coords = corner_coord(axlims)
+
+ctd2dataset               Generates a GCE Data Structure containing CTD station locations and labels for display or plotting
+                          syntax: [s, msg] = ctd2dataset(interval, rivers, transects)
+
+ctd_stations              Dialog for plotting nominal LMER and GCE-LTER ctd station labels on a map,
+                          syntax: ctd_stations
+
+ddeg2dms                  Converts geographic coordinates from decimal degrees format to degrees, minutes, seconds
+                          syntax: dms = ddeg2dms(ddeg)
+
+deg2utm                   Converts geographic coordinates from lat/lon degrees to UTM using the specified ellipsoid datum
+                          syntax: [zone, utm_east, utm_north, hem, errormsg] = deg2utm(lon, lat, datum)
+
+deg2utmzone               Converts geographic coordinates from lat/lon degrees to UTM using the specified ellipsoid datum
+                          syntax: [zone, utm_east, utm_north, hem, errormsg] = deg2utmzone(lon, lat, datum, zone)
+
+degmins                   Creates a degrees and minutes label for use in labeling map axes
+                          syntax: degstring = degmins(degrees, ndigit)
+
+distbar                   Creates a checked distance bar with alternating checked ticks for a map plot.
+                          syntax: h_db = distbar(pos, distmajor, distminor, distheight, fontsize, fontweight, color, retain)
+
+dms2ddeg                  Converts geographic coordinates from degrees, minutes, seconds to decimal degrees format
+                          syntax: ddeg = dms2ddeg(dms)
+
+edit_polygon              Interactive polygon editor application called by 'poly_mgr'
+                          syntax: edit_polygon(op, data, polylabel, polydate, h_map, style)
+
+editnote                  Dialog for adding or editing text annotations on figures. Can be called without arguments to
+                          syntax: editnote(op, h)
+
+errorbox                  Generates a simple message box to acknowledge error conditions.  The
+                          syntax: errorbox(op, message)
+
+exportfig                 Exports the current figure in the specified format with uicontrol printing suppressed, prompting for filename and path
+                          syntax: exportfig(option)
+
+fillseg                   Fills polygon line segments separated by [nan nan] (eg. Coastline data)
+                          syntax: h = fillseg(X, c1, c2)
+
+find_stations             Generates arrays of locations and labels for a range of CTD stations in a reference transect
+                          syntax: [stat_coord, stat_labels] = find_stations(stat_ref, stat_begin, stat_end, stat_int, tol)
+
+gcepoly2kml               Creates a Google Earth KML file from a GCE geographic polygon structure with fields 'SiteCode' and 'Polygon'
+                          syntax: msg = gcepoly2kml(coords, fn, vertices)
+
+gen2mat                   Reads .GEN files created by Arcview's UNGENERATE command into a MATLAB array
+                          syntax: map = gen2mat(filename, pathname)
+
+geoarea_mouse             Calculates geographic surface area of a rectangle selected with the mouse
+                          syntax: [geoarea, coords] = geoarea_mouse(units)
+
+geocenter                 Returns the weighted geographic center of a polygon
+                          syntax: coords = geocenter(polygon, res)
+
+get_bbox                  Returns a bounding box based on dragging a rectangle on a map figure, optionally plotting the result
+                          syntax: get_bbox(cb, plotopt, color)
+
+gps2river                 Matches geographic coordinates to rivers based on bounding polygons in 'thalweg_bnd.mat'
+                          syntax: river = gps2river(lon, lat)
+
+gps2riverdist             Computes transect distances along Thalweg lines from geographic coordinates
+                          syntax: [distance, river] = gps2riverdist(lon, lat, river, accuracy, disttol)
+
+gps2thalweg               Generates a high resolution Thalweg line from an array of GPS locations along a river channel
+                          syntax: [lon, lat, dist] = gps2thalweg(lon0, lat0, dist0, res)
+
+gpsaxis                   Returns axis scaling array and aspect ratio to plot 'gps' on a map
+                          syntax: [axlims, aspect] = gpsaxis(gps, mode, boundary)
+
+gpsdist                   Calculates great circle distance between geographic coordinates (longitude/latitude pairs)
+                          syntax: y = gpsdist(coords1, coords2, units)
+
+gpsdistk                  Computes distance (in km) between GPS coordinates 'gps1' and 'gps2'
+                          syntax: d = gpsdistk(gps1, gps2)
+
+ins_coord                 Inserts gps coordinates into a map longitude/latitude array to replace a specified segment
+                          syntax: mapdata2 = ins_coord(coords, mapdata, segnum, append, newseg)
+
+insetmap                  Opens a map figure window that displays the specified boundaries or the boundaries
+                          syntax: insetmap(patchcolor, edgecolor, boxlimits)
+
+insidepoly                Determines if points are inside/outside of a polygon
+                          syntax: ind = insidepoly(x, y, xv, yv, tol)
+
+labeledit                 Text editing dialog box, to be used as a callback function associated with text objects.
+                          syntax: labeledit(op, h)
+
+lasso                     Builds an array of positions defining a closed polygon of specified shape
+                          syntax: [pos, h_line] = lasso(shape, colorval)
+
+load_drg                  Loads a clipped USGS DRG map file in TIFF format, and uses the
+                          syntax: load_drg(fn, pn, mapinfo)
+
+loadmap                   Loads a MATLAB map figure, centers it onscreen, and updates the title and axes labels
+                          syntax: h_fig = loadmap(fn, pn)
+
+locations2dataset         Generates a data set in GCE data structure format from a geographic location structure
+                          syntax: [s, msg] = locations2dataset(locations)
+
+map_patch                 Plot data values on a map figure as colored patches
+                          syntax: map_patch(lon, lat, vals, patchsize, cbartitle, clims, colormap)
+
+mapaxis                   Axis limits dialog box for map plots
+                          syntax: mapaxis
+
+mapbuttons                Creates map toggle buttons to enable zoom, pan and probe functions via
+                          syntax: mapbuttons(op)
+
+mapclick                  function called by 'mapbuttons.m' to handle mouse clicks on maps
+                          syntax: mapclick(mode, opt)
+
+mapcolor                  Dialog called by 'mapmenu' for selecting map colors
+                          syntax: mapcolor(op)
+
+mapimage                  plot a colormapped raster image on a map plot
+                          syntax: h_img = mapimage(img, cmap, wlon, elon, slat, nlat, h_fig, {titlestr})
+
+mapmenu                   Switchyard function to create custom map menu and handle callbacks
+                          syntax: mapmenu(op)
+
+mapscale                  Map scale dialog box function
+                          syntax: mapscale(op, initvals)
+
+mapticks                  Formats plot tickmarks in decimal degrees format with degree symbols or degrees and minutes format
+                          syntax: mapticks(op, style, rotate, h_ax)
+
+merge_polygons            Merges polygons stored in GCE Maptools .ply files to form a new compbined database
+                          syntax: [polydata, msg] = merge_polygons(opt, sortnames, fn1, pn1, fn2, pn2, fn_out, pn_out)
+
+movepoly                  Moves a polygon (line object) to new center coordinates selected with the mouse.
+                          syntax: movepoly(h)
+
+newpoly                   New polygon dialog called by 'surfintegrate'
+                          syntax: newpoly(op, callback, h_figure, h_report, initvals)
+
+plot_locations            Plots sampling locations on a map and generates a figure legend
+                          syntax: plot_locations(lon, lat, types, labels, h_map, symbols, colors)
+
+plot_shapefile_polygons   plots polygons in an ArcGIS shapefile on a MATLAB figure
+                          syntax: [h_poly, h_labels] = plot_shapefile_polygons(fn, pn, linewidth, color, label, h_fig)
+
+plotmap                   Creates a new figure window and generates a continuous line plot of the coordinates in 'map'
+                          syntax: h_fig = plotmap(map, bounds, mapedge, mapfill, background, figname)
+
+plotrect                  Plots a rectangular bounding box around an array of coordinates
+                          syntax: plotrect(coords, lbl, clr)
+
+plotseg                   Plot a specific segment of a coastline data file using the 'fillseg' function
+                          syntax: plotseg(mapdata, segnum, fillcolor, edgecolor)
+
+plotstations              Plots station labels on a map, centered over the locations given by lon, lat
+                          syntax: h = plotstations(lon, lat, labels, clr, fontsize, tag)
+
+pointlabels               Plots point labels for map coordinates (if 'str' is omitted,
+                          syntax: [h_line, h_text] = pointlabels(lon, lat, str, symbol, clr, offset, fontsize, tag)
+
+poly2thalweg_bnd          Updates Thalweg boundary data in 'thalweg_bnd.mat' by parsing polygons from a polygon manager (.ply) file
+                          syntax: msg = poly2thalweg_bnd(transect, fn_poly)
+
+poly_mgr                  Polygon management utility called by 'plotmap'
+                          syntax: poly_mgr
+
+poly_title                Dialog called by 'poly_mgr' to update the title of a polygon
+                          syntax: poly_title(op, str, h_cb, cb, caption, dlgtitle)
+
+polyvert                  Polygon numerical vertices dialog called by 'createpoly'
+                          syntax: polyvert(op, initvals, callback, h_figure, h_report)
+
+r12_axistitles            Updates axis titles in R11-saved figures to support zooming in R12
+                          syntax: r12_axistitles
+
+radcalc                   Returns the radius of the circle with origin x(1),y(1) and peripheral point x(2),y(2)
+                          syntax: rad = radcalc(xarray, yarray)
+
+read_seg                  Reads the array of segments specified by 'segs' in 'mapdata'
+                          syntax: mapdata2 = read_seg(mapdata, segs)
+
+rec2paral                 Shifts the top of a rectangle or parallelogram represented by the line handle 'h' by the amount 'topoffset'
+                          syntax: rec2paral(h, topoffset)
+
+repl_seg                  Replaces the contents of segment 'segnum' in 'mapdata' with 'coords'
+                          syntax: mapdata2 = repl_seg(mapdata, segnum, coords)
+
+riverdist2gps             Returns geographic coordinates for transect distances along Thalweg lines for a specified river
+                          syntax: [lon, lat] = riverdist2gps(dist, river, method)
+
+rotateyticks              Converts Y-axis tick labels to text strings rotated at a 90° angle
+                          syntax: rotateyticks(lbl)
+
+roundsig                  Rounds numbers to the indicated significant digits using the method specified
+                          syntax: x2 = roundsig(x, sigdig, method)
+
+shapefile2gcepoly         Creates a GCE geographic coordinate structure for polygons stored in an ArcGIS shapefile
+                          syntax: [coords, shapes, attributes] = shapefile2gcepoly(fn, pn, id_field, utm_zone, utm_datum, numeric_prefix)
+
+sitearea                  Calculates the surface area entrained by a site polygon in lat/lon degrees or utm.
+                          syntax: area = sitearea(coords, output, units)
+
+split_seg                 Inserts NaN values to split a longitude/latitude array at specified positions
+                          syntax: mapdata2 = split_seg(mapdata, pos)
+
+textedit                  Text editing dialog box, to be used as a callback function associated with text objects.
+                          syntax: textedit(op)
+
+thalweg2stations          Generates a structure of CTD profiling station descriptions and coordinates from a Thalweg reference data set
+                          syntax: stations = thalweg2stations(transect, prefix, interval, datum)
+
+trandist                  Function for computing upriver distance of coordinates 'gps' relative to reference track 'ref'.
+                          syntax: dist = trandist(gps, ref, accuracy, disttol)
+
+update_ctd_stations       Updates CTD stations in 'ctd_stations.mat' based on Thalweg reference transects
+                          syntax: msg = update_ctd_stations(fn_thalweg)
+
+update_thalweg            Updates Thalweg reference data for a named transect in 'thalweg_ref.mat' and 'thalweg_bnd.mat'
+                          syntax: msg = update_thalweg(transect, thalweg)
+
+updateaxis                Updates map plot axis limits to a geographically-correct aspect ratio
+                          syntax: updateaxis(op, gps, mode, bound)
+
+upgrade_maps              Upgrades maps figures to include the latest versions of the GCE polygon database, map menus and buttons
+                          syntax: upgrade_maps(pn)
+
+utm2deg                   Converts geographic coordinates from UTM to decimal degrees (lon,lat)
+                          syntax: [lon, lat, errormsg] = utm2deg(zone, utm_east, utm_north, hem, datum)
+
+writepoly                 Writes full geographic information about map polygons to disk in tab-delimited
+                          syntax: msg = writepoly(polydata, fn, pn)
+
+writepoly2                Writes specific geographic information about map polygons to disk in tabular
+                          syntax: writepoly2(polydata, units, fn, pn)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               Data Harvesting and Processing Workflow Function                               
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+calc_well_waterlevel      Adds a calculated water level column to a well data set based on sensor elevation and sensor depth
+                          syntax: [s2, msg] = calc_well_waterlevel(s, col_elevation, col_depth)
+
+correct_well_pressure     Corrects groundwater well pressure for atmospheric pressure, optionally offset from pressure at time 0
+                          syntax: [s2, msg] = correct_well_pressure(s, col_pressure, col_atm, colname, pressure_t0, calc_depth)
+
+depth2waterlevel          calculates water level in meters from depth based on mooring elevation in m (NAVD88 datum)
+                          syntax: [s2, msg] = depth2waterlevel(s, col_depth, elevation)
+
+harvest_dashboard         Generates plots and an XML file describing status of each variable to support harvest dashboard web page development
+                          syntax: [msg, s_xml] = harvest_dashboard(s, pn, time_offset, fn_xml, nav, plot_prefix, xsl_url, html, intervals, cols, thumbnail_size, plotoptions)
+
+harvest_datapages_xml     Generates xml-based data distribution pages for harvested data files for a specified station
+                          syntax: msg = harvest_datapages_xml(pn_base, subdir, harvest_id, html, interval, flagcols)
+
+harvest_usgs_general      Harvests USGS gauging station data for generates standard data sets, plots and index pages for the web
+                          syntax: [msg, info] = harvest_usgs_general(info, pn_working, pn_data, fn_template_data, fn_template_plots, pn_template, nav_base, clear_provisional, units)
+
+harvest_usgs_general_xml  Harvests USGS gauging station data and generates standard data sets, plots and xml index pages for the web
+                          syntax: [msg, info] = harvest_usgs_general_xml(info, pn_working, pn_data, nav_base, xsl_index, xsl_details, xsl_plots, url_base, clear_provisional, units)
+
+harvest_webplots_xml      Generates web plots for harvested data using stored plot configuration information for a station
+                          syntax: msg = harvest_webplots_xml(fn_data, pn_data, pn_plots, harvest_id, interval, html, date_start, date_end, nullflagsopt, visible)
+
+interp_parms_by_salinity  Generates a derived data set containing interpolated variable measurements for a target salinity
+                          syntax: [s2, msg] = interp_parms_by_salinity(s, salinity_array, col_date, col_salinity, parms, tol_value, tol_percent, method)
+
+lter_allsite_climate      Workflow that generates integrated daily and monthly climate description datasets for a list of LTER stations
+                          syntax: [msg, log, s_monthly, s_daily] = lter_allsite_climate(fn_harvestlist, interp_daily, min_year, max_year, fn_daily, fn_monthly, missingchar)
+
+lter_climate_monthly      Workflow that generates integrated monthly LTER climate description datasets from integrated daily data
+                          syntax: [s_monthly, msg] = lter_climate_monthly(s_daily, min_year, max_year, fn_export, missingchar)
+
+split_toa5                Splits a Campbell Scientific Instruments TOA5 file into daily or hourly files
+                          syntax: [msg, filelist] = split_toa5(fn, pn, interval, basefn, pn2, fn_base)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                              Toolbox Extensions                                              
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DTchan2gce                Converts Data Turbine channel data returned from DTalign into a GCE Data Structure
+                          syntax: [s, msg] = DTchan2gce(data, template, titlestr, server, source)
+
+DTharvestStructGCE        Generates an options structure for use with DTharvest.m containing a workflow to generate a GCE Data Structure
+                          syntax: options = DTharvestStructGCE(fn, period, time_offset, template, title, server, source)
+
+DTsource2gce              Imports data channels from a Data Turbine source to create a GCE Data Structure
+                          syntax: [s, msg, lastdate] = DTsource2gce(server, source, startdate, time_offset, template, maxdays)
+
+extensions                GCE Data Toolbox custom extension handler
+                          syntax: extensions(op, data, argument)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                 Demonstration Functions for Toolbox Training                                 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+csi2struct.csv            Miscellaneous support file
+
+data_harvester            Data harvester function template for post-processing streaming sensor data cached on a file system
+                          syntax: [msg, status] = data_harvester(pn_source, fn_source, template, sitecode, profile, pn_dest, pn_plots, html, email, fn_dest, reprocess)
+
+data_harvester_sql        Data harvester function template for post-processing streaming sensor data retrieved from an SQL data source
+                          syntax: [msg, status] = data_harvester_sql(source, template, sitecode, profile, pn_dest, pn_plots, html, email, fn_dest)
+
+data_submission_template.xlsMiscellaneous support file
+
+data_submission_template_instructions.rtfMiscellaneous support file
+
+gap_fill_report           Generates or appends to a text report of dates gap-filled by pad_date_gaps.m
+                          syntax: msg = gap_fill_report(dt_fill, fn, colname, fmt, interval, dateformat, appendopt)
+
+gce2odm                   Converts a GCE Data Structure to an ODM-compatible data table
+                          syntax: [s_odm, msg, s2] = gce2odm(s, sitecode, datecol, utc_offset, missingflag, qc_level, s_varmap, s_flagmap)
+
+harvest_dashboard.css     Miscellaneous support file
+
+harvest_dashboard_badvars.cssMiscellaneous support file
+
+harvest_dashboard_select.cssMiscellaneous support file
+
+harvest_details.css       Miscellaneous support file
+
+harvest_details.js        Miscellaneous support file
+
+harvest_info              Master harvest configuration information retrieval function for use with harvest_datapages_xml
+                          syntax: [nav, titlestring, xsl_index, xsl_details, url_base] = harvest_info(id)
+
+harvest_plot_info         Master plot configuration information retrieval function for use with harvest_plots_xml
+                          syntax: [plotinfo, nav, pagetitle] = harvest_plot_info(id)
+
+harvest_webpage.css       Miscellaneous support file
+
+list_utils_dashboard.js   Miscellaneous support file
+
+localpath                 Returns a localized path name stored as a variable in /userdata/localpaths.mat
+                          syntax: pn = localpath(pathtype)
+
+process_toa5              test processing script for sample Campbell data
+                          syntax: [data, msg] = process_toa5(fn_source, pn_source, template)
+
+sample_data_toa5.dat      Miscellaneous support file
+
+

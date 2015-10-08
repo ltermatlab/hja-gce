@@ -1,0 +1,240 @@
+body {
+	background-color: #FFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	background: #F5F5F5;
+}
+#header {
+	height: 110px;
+	background-color: #6C960C;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #3D5904;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #739F0E;
+	background-image: url(http://gce-lter.marsci.uga.edu/public/xsl/toolbox/gce-header-bg.jpg);
+	background-repeat: repeat-x;
+}
+#header img {
+	padding-left: 34px;
+	border: none;
+}
+#navigation {
+	padding: 1em 0 2em 10px;
+	background-color: #FFF;
+}
+#content {
+	clear: both;
+	padding: 0 7.5% 5em 7.5%;
+	background-color: #FFFFFF;
+}
+#footer {
+	padding: 1em 10%;
+	border-top: 2px dotted #DDD;
+	clear: both;
+	text-align: center;
+}
+#footer img {
+	padding-top: 10px;
+}
+table {
+	border-collapse: collapse;
+}
+h1 {
+	font-size: 16px;
+	margin: 0 8% 0 8%;
+	text-align: center;
+}
+hr {
+	width: 75%; 
+	color: #360; 
+	background-color: #360; 
+	border: none; 
+	height: 2px; 
+	margin: 0.75em auto 1.5em auto;
+}
+p.note  {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 8pt; 
+	font-style: italic; 
+	color: #360;; 
+	text-align: center; 
+	margin-top: 2em; 
+	padding: 0;
+}
+#plot_table table {
+	margin: 1em auto 0 auto;
+}
+p.date-generated {
+	text-align: left;
+	padding: 3em 0 5em 24px;
+	font-style: italic;
+	color: #360;
+	font-size: 11px;
+}
+#plot_table th  {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 10pt; 
+	font-weight: bold;
+	text-align: left;
+	padding: 3px;
+	background-color: #EFEFEF;
+}
+#plot_table td  {
+	text-align: center; 
+	vertical-align: top;
+	padding: 6px 0 12px 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+#plot_table td.label {
+	font-weight: bold;
+	color: #360;
+	padding: 6px 30px 0 0;
+	text-align: center;
+}
+#plot_table a {
+	text-decoration: none;
+}
+#plot_table a img {
+	border: 0;
+	text-align: center;
+}
+#available-files {
+	margin: 1em 5% 1em 2%;
+	text-align: center;
+}
+#available-files table {
+	border-top: 1px solid #360;
+	border-bottom: 1px solid #360;
+}
+#available-files th, #available-files td {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	padding: 3px 8px 3px 8px;
+	text-align: center;
+}
+#available-files th {
+	border-bottom: 1px solid #360;
+	background-color: #FFFFF0;
+	color: #336600;
+	white-space: nowrap;
+}
+#available-files td {
+	vertical-align: top;
+	border-top: 1px solid #360;
+	background-color: #FFF;
+	color: #000;	
+}
+#available-files td.files, #available-files td.links {
+	white-space: nowrap;
+}
+#available-files td.title {
+	text-align: left;
+	padding-left: 36px;
+	text-indent: -30px;
+	white-space: normal;
+}
+#dataset-details {
+	margin: 1em 2.5% 1em 2.5%;
+}
+#dataset-details table {
+	border-top: 1px solid #360;
+	border-bottom: 1px solid #360;
+}
+#dataset-details th, #dataset-details td {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	border-bottom: 1px solid #DDD;
+	padding: 5px;
+}
+#dataset-details th {
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: top; 
+	width: 15%;
+	font-weight: bold;
+	color: #336600;
+}
+#dataset-details td {
+	text-align: left;
+	width: 85%;
+}
+#dataset-details th.toprow, #dataset-details td.toprow {
+	font-weight: bold;
+	background-color: #FFFFF0;
+	border-bottom: 1px solid #360;
+}
+#dataset-details table.attributes {
+	border: none;
+	margin: 0 0 0.5em 40px;
+	width: 85%;
+}
+#dataset-details table.attributes th,#dataset-details table.attributes td {
+	background-color: #FFF;
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 5px 1px 8px;
+	white-space: nowrap;
+}
+#dataset-details table.attributes td {
+	font-weight: normal;
+	border-bottom: none;
+}
+#dataset-details table.attributes th {
+	font-weight: bold;
+	border-top: 1px dotted #AAA;
+	border-bottom: 1px dotted #AAA;
+}
+#dataset-details table.attributes td.description {
+	display: none;
+	white-space: normal;
+}
+#dataset-details p {
+	margin: 0;
+}
+#dataset-details p.entity {
+	margin-bottom: 0.5em;
+	padding-left: 96px;
+	text-indent: -96px;
+}
+#dataset-details p.entity-sub {
+	margin-bottom: 0.5em;
+	padding-left: 112px;
+	text-indent: -96px;
+}
+table.stations  { 
+	width: 85%;
+	margin: 1em 10% 2em 5%;
+	border-top: 1px solid #336600; 
+	border-bottom: 1px solid #336600;
+}
+table.stations th  { 
+	text-align: center;
+	white-space: nowrap;
+	padding: 3px 8px 3px 8px;
+	border-bottom: 1px solid #336600;
+	background-color: #FFFFF0; 
+}
+table.stations td  { 
+	vertical-align: top;
+	text-align: center;
+	white-space: nowrap;
+	padding: 3px 10px;
+	border-bottom: 1px solid #CCCCCC;
+}
+table.stations td.lastrow {
+	padding-bottom: 6px;
+	border-bottom: none;
+}
+p.info  { 
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 6px;
+	border-bottom: none;
+	margin-left: 36px;
+	text-indent: -36px;
+}

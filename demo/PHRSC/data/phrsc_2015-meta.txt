@@ -1,0 +1,515 @@
+I. Data Set Descriptors 
+   A. Title: Primet Horizontal Radiation Shield Comparison
+   B. Accession Number: 
+   C. Description 
+      1. Originator(s): Chris Daly
+      2. Abstract: The Primet Horizontal Radiation Shield Comparison (PHRSC) measures the 
+         temperature difference between a reference temperature sensor inside a fan aspirated 
+         radiation shield and temperature sensors located inside passively aspirated radiation 
+         shields. Displayed data are statistics over 15 minute time periods. Observered variables 
+         include air temperature, wind speed and direction, and short and longwave radiation.
+      3. Study Type: 
+      4. Study Themes: 
+      5. LTER Core Areas: 
+      6. Georeferences: 
+      7. Submission Date: 
+   D. Keywords: 
+II. Research Origin Descriptors 
+   A. Overall Project Description 
+      1. Project Title: 
+      2. Principal Investigators: 
+         Name:
+         Position:
+         Organization:
+         Address:
+         City:
+         State:
+         Postal Code:
+         Phone:
+         Email:
+         UserID:
+      3. Funding Period:  to 
+      4. Objectives: 
+      5. Abstract: 
+      6. Funding Source: 
+   B. Sub-project Description 
+      1. Site Description 
+         a. Geographic Location: 
+            Coordinates: 
+         b. Physiographic Region: 
+         c. Landform Components: 
+         d. Hydrographic Characteristics: 
+         e. Topographic Attributes: 
+         f. Geology, Lithology and Soils: 
+         g. Vegetation Communities: 
+         h. History of Land Use and Disturbance: 
+         i. Climate: 
+      2. Experimental or Sampling Design 
+         a. Design Characteristics: 
+         b. Permanent Plots: 
+         c. Data Collection Duration and Frequency: 
+            Beginning of Observations: 01-Jan-2015
+            End of Observations: 22-Sep-2015
+      3. Research Methods 
+         a. Field and Laboratory Methods: 
+         b. Instrumentation: 
+         c. Taxonomy and Systematics: 
+         d. Permit History: 
+      4. Project Personnel 
+         a. Personnel: 
+         b. Affiliations: 
+III. Data Set Status and Accessibility 
+   A. Status 
+      1. Latest Update: 22-Sep-2015
+      2. Latest Archive Date: 
+      3. Latest Metadata Update: 22-Sep-2015
+      4. Data Verification Status: 
+   B. Accessibility 
+      1. Storage Location and Medium: Stored at  
+         on media: 
+      2. Contact Person: 
+         Name:
+         Position:
+         Organization:
+         Address:
+         City:
+         State:
+         Postal Code:
+         Phone:
+         Email:
+         UserID:
+      3. Copyright Restrictions: 
+      4. Restrictions: 
+         a. Release Date: Affiliates: , Public: 
+         b. Citation: 
+         c. Disclaimer: 
+      5. Costs: 
+IV. Data Structural Descriptors 
+   A. Data Set File 
+      1. File Name: phrsc_2015.csv
+      2. Size: 25386 records
+      3. File Format: ASCII text (comma-separated value format)
+      3a. Delimiters: single comma
+      4. Header Information: 5 lines of ASCII text
+      5. Alphanumeric Attributes: 
+      6. Quality Control Flag Codes: Q = questionable value, I = invalid value (out of range), V = 
+         Value exceeds local range criteria, D = Value exceeds sensor detection limit, ? = 
+         unspecified, ? = unspecified, ? = unspecified, ? = unspecified, ? = unspecified
+      7. Authentication Procedures: 
+      8. Calculations: 
+      9. Processing History: 
+         Software version: GCE Data Toolbox Version 3.9.4 (27-Aug-2015)
+         Data structure version: GCE Data Structure 1.1 (29-Mar-2001)
+         Original data file processed: PHRSCTable1.dat (25378 records)
+         Data processing history:
+            22-Sep-2015: new GCE Data Structure 1.1 created ('newstruct')
+            22-Sep-2015: 25378 rows imported from ASCII data file 'PHRSCTable1.dat' ('imp_ascii')
+            22-Sep-2015: 4 metadata fields in file header parsed ('parse_header')
+            22-Sep-2015: automatically assigned numerical types and precisions for columns 
+               Second%%temp, RECORD, RMY_ASP_Avg, Cotton_Avg, Gill_Sh_Avg, HJA_Sh_Avg, Gill_Lg_Avg, 
+               HJA_Lg_Avg, Gill_AF_Avg, CM3_Up_Avg, CM3_Dn_Avg, WindSp_Avg and WindDir; assigned 
+               data types of columns Second%%temp and RECORD to 'd' (integer); assigned data types 
+               of columns RMY_ASP_Avg, Cotton_Avg, Gill_Sh_Avg, HJA_Sh_Avg, Gill_Lg_Avg, 
+               HJA_Lg_Avg, Gill_AF_Avg, CM3_Up_Avg, CM3_Dn_Avg, WindSp_Avg and WindDir to 'f' 
+               (floating-point) ('assign_numtype')
+            22-Sep-2015: data structure validated ('gce_valid')
+            22-Sep-2015: calculated calendar date in MATLAB serial day (base 1/1/0000) format from 
+               individual date component columns Year%%temp, Month%%temp, Day%%temp, Hour%%temp, 
+               Minute%%temp and Second%%temp, added 'Date' column at position 1 ('add_datecol')
+            22-Sep-2015: updated attribute metadata descriptors ('update_attributes'): updated 
+               units for column Date from serial day (base 1/1/0000) to serial day (base 1/1/0000) 
+               - PST
+            22-Sep-2015: deleted columns Year%%temp, Month%%temp, Day%%temp, Hour%%temp, 
+               Minute%%temp and Second%%temp from the structure ('deletecols')
+            22-Sep-2015: automatically assigned study date metadata descriptors based on the range 
+               of date values in date/time columns (add_studydates)
+            22-Sep-2015: imported all documentation metadata from the template 'LNDB_phrsc_2', 
+               updating descriptors for columns Date, RMY_ASP_Avg, Cotton_Avg, Gill_Sh_Avg, 
+               HJA_Sh_Avg, Gill_Lg_Avg, HJA_Lg_Avg, Gill_AF_Avg, CM3_Up_Avg, CM3_Dn_Avg, WINDSP_AVG 
+               and WINDDIR_AVG ('meta_template')
+            22-Sep-2015: updated 5 metadata fields in the Data, Dataset, Status sections ('addmeta')
+            22-Sep-2015: updated title ('newtitle')
+            22-Sep-2015: Q/C flagging criteria applied, 'flags' field updated ('dataflag')
+            22-Sep-2015: Name of column WindSp_Avg changed to WINDSP_AVG; Name of column WindDir 
+               changed to WINDDIR_AVG; ('apply_template')
+            22-Sep-2015: Units of column RMY_ASP_Avg changed from '' to 'deg c'; Units of column 
+               Cotton_Avg changed from '' to 'deg c'; Units of column Gill_Sh_Avg changed from '' 
+               to 'deg c'; Units of column HJA_Sh_Avg changed from '' to 'deg c'; Units of column 
+               Gill_Lg_Avg changed from '' to 'deg c'; Units of column HJA_Lg_Avg changed from '' 
+               to 'deg c'; Units of column Gill_AF_Avg changed from '' to 'deg c'; Units of column 
+               CM3_Up_Avg changed from '' to 'w m-2'; Units of column CM3_Dn_Avg changed from '' to 
+               'w m-2'; Units of column WINDSP_AVG changed from '' to 'm s-1'; Units of column 
+               WINDDIR_AVG changed from '' to 'degrees'; ('apply_template')
+            22-Sep-2015: Numeric Type of column WINDDIR_AVG changed from 'continuous' to 'angular'; 
+               ('apply_template')
+            22-Sep-2015: Q/C Criteria of column Date changed from '' to 'isnan(x)='M''; Q/C 
+               Criteria of column RMY_ASP_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column Cotton_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column Gill_Sh_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column HJA_Sh_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column Gill_Lg_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column HJA_Lg_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column Gill_AF_Avg changed from '' to 
+               'isnan(x)='M';x<=-35='I';x>50='I';x<-18='Q';x>45='Q';x<col_FOURLO='Q';x>col_FOURHI='Q
+               ';flag_valuechange(x,8,8,1)='I';flag_valuechange(x,6.5,6.5,1)='V''; Q/C Criteria of 
+               column CM3_Up_Avg changed from '' to 
+               'isnan(x)='M';x>2000='I';x<-2000='I';x>1060='Q''; Q/C Criteria of column CM3_Dn_Avg 
+               changed from '' to 'isnan(x)='M''; Q/C Criteria of column WINDSP_AVG changed from '' 
+               to 'x<=0.3='N';x<=1='B';x>20='I';x>15='Q';isnan(x)='M''; Q/C Criteria of column 
+               WINDDIR_AVG changed from '' to 
+               'isnan(x)='M';x<0='I';x>360='I';col_WINDSP_AVG=0='I''; ('apply_template')
+            22-Sep-2015: Precision of column Date changed from 6 to 7; Precision of column 
+               RMY_ASP_Avg changed from 4 to 3; Precision of column Cotton_Avg changed from 4 to 3; 
+               Precision of column Gill_Sh_Avg changed from 4 to 3; Precision of column HJA_Sh_Avg 
+               changed from 4 to 3; Precision of column Gill_Lg_Avg changed from 4 to 3; Precision 
+               of column HJA_Lg_Avg changed from 4 to 3; Precision of column Gill_AF_Avg changed 
+               from 4 to 3; Precision of column CM3_Dn_Avg changed from 3 to 2; Precision of column 
+               WINDSP_AVG changed from 5 to 2; Precision of column WINDDIR_AVG changed from 3 to 2; 
+               ('apply_template')
+            22-Sep-2015: Descriptions of columns Date, RMY_ASP_Avg, Cotton_Avg, Gill_Sh_Avg, 
+               HJA_Sh_Avg, Gill_Lg_Avg, HJA_Lg_Avg, Gill_AF_Avg, CM3_Up_Avg, CM3_Dn_Avg, WINDSP_AVG 
+               and WINDDIR_AVG edited; ('apply_template')
+            22-Sep-2015: added column 'Site' at position 1 ('addcol')
+            22-Sep-2015: inserted 8 new records with date/time values and NaN/null data values 
+               (replicating common values in the non-data columns Site) to fill in date/time 
+               interval gaps in the data series and assigned flag 'M' to inserted records 
+               ('pad_date_gaps')
+            22-Sep-2015: sorted by column Date(ascending) ('sortdata')
+            22-Sep-2015: sorted by column Date(ascending) ('sortdata')
+            22-Sep-2015: flags for columns RECORD, RMY_ASP_Avg, Cotton_Avg, Gill_Sh_Avg, 
+               HJA_Sh_Avg, Gill_Lg_Avg, HJA_Lg_Avg, Gill_AF_Avg, CM3_Up_Avg, CM3_Dn_Avg, WINDSP_AVG 
+               and WINDDIR_AVG converted to data columns, flag codes updated in metadata 
+               ('flags2cols')
+            22-Sep-2015: updated 6 metadata fields in the Data sections ('addmeta')
+            22-Sep-2015: updated 15 metadata fields in the Status, Data sections to reflect 
+               attribute metadata ('updatecols')
+            22-Sep-2015: parsed and formatted metadata ('listmeta')
+   B. Variable Information 
+      1. Variable Name: 
+         column  1. Site
+         column  2. Date
+         column  3. RECORD
+         column  4. Flag_RECORD
+         column  5. RMY_ASP_Avg
+         column  6. Flag_RMY_ASP_Avg
+         column  7. Cotton_Avg
+         column  8. Flag_Cotton_Avg
+         column  9. Gill_Sh_Avg
+         column 10. Flag_Gill_Sh_Avg
+         column 11. HJA_Sh_Avg
+         column 12. Flag_HJA_Sh_Avg
+         column 13. Gill_Lg_Avg
+         column 14. Flag_Gill_Lg_Avg
+         column 15. HJA_Lg_Avg
+         column 16. Flag_HJA_Lg_Avg
+         column 17. Gill_AF_Avg
+         column 18. Flag_Gill_AF_Avg
+         column 19. CM3_Up_Avg
+         column 20. Flag_CM3_Up_Avg
+         column 21. CM3_Dn_Avg
+         column 22. Flag_CM3_Dn_Avg
+         column 23. WINDSP_AVG
+         column 24. Flag_WINDSP_AVG
+         column 25. WINDDIR_AVG
+         column 26. Flag_WINDDIR_AVG
+      2. Variable Definition: 
+         column  1. Site code
+         column  2. TmStamp
+         column  3. RECORD
+         column  4. QA/QC flags for RECORD (flagging criteria, where "x" is RECORD: manual)
+         column  5. Averaged measurement of RMY_ASP_Avg
+         column  6. QA/QC flags for Averaged measurement of RMY_ASP_Avg (flagging criteria, where 
+            "x" is RMY_ASP_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column  7. Averaged measurement of Cotton_Avg
+         column  8. QA/QC flags for Averaged measurement of Cotton_Avg (flagging criteria, where 
+            "x" is Cotton_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column  9. Averaged measurement of Gill_Lg_Avg
+         column 10. QA/QC flags for Averaged measurement of Gill_Lg_Avg (flagging criteria, where 
+            "x" is Gill_Sh_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column 11. Averaged measurement of HJA_Sh_Avg
+         column 12. QA/QC flags for Averaged measurement of HJA_Sh_Avg (flagging criteria, where 
+            "x" is HJA_Sh_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column 13. Averaged measurement of Gill_Lg_Avg
+         column 14. QA/QC flags for Averaged measurement of Gill_Lg_Avg (flagging criteria, where 
+            "x" is Gill_Lg_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column 15. Averaged measurement of HJA_Lg_Avg
+         column 16. QA/QC flags for Averaged measurement of HJA_Lg_Avg (flagging criteria, where 
+            "x" is HJA_Lg_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column 17. Averaged measurement of Gill_Sh_Avg
+         column 18. QA/QC flags for Averaged measurement of Gill_Sh_Avg (flagging criteria, where 
+            "x" is Gill_AF_Avg: isnan(x)="M", x<=-35="I", x>50="I", x<-18="Q", x>45="Q", 
+            x<FOURLO="Q", x>FOURHI="Q", flag_valuechange(x,8,8,1)="I", 
+            flag_valuechange(x,6.5,6.5,1)="V", manual)
+         column 19. Upward facing sensor that measures down-welling solar radiation
+         column 20. QA/QC flags for Upward facing sensor that measures down-welling solar radiation 
+            (flagging criteria, where "x" is CM3_Up_Avg: isnan(x)="M", x>2000="I", x<-2000="I", 
+            x>1060="Q", manual)
+         column 21. Downward facing sensor that measures up-welling solar radiation
+         column 22. QA/QC flags for Downward facing sensor that measures up-welling solar radiation 
+            (flagging criteria, where "x" is CM3_Dn_Avg: isnan(x)="M", manual)
+         column 23. Averaged measurement of WindSp_Avg
+         column 24. QA/QC flags for Averaged measurement of WindSp_Avg (flagging criteria, where 
+            "x" is WINDSP_AVG: x<=0.3="N", x<=1="B", x>20="I", x>15="Q", isnan(x)="M")
+         column 25. Instantaneous measurement of WindDir
+         column 26. QA/QC flags for Instantaneous measurement of WindDir (flagging criteria, where 
+            "x" is WINDDIR_AVG: isnan(x)="M", x<0="I", x>360="I", WINDSP_AVG=0="I")
+      3. Units of Measurement: 
+         column  1. 
+         column  2. serial day (base 1/1/0000) - PST
+         column  3. 
+         column  4. none
+         column  5. deg c
+         column  6. none
+         column  7. deg c
+         column  8. none
+         column  9. deg c
+         column 10. none
+         column 11. deg c
+         column 12. none
+         column 13. deg c
+         column 14. none
+         column 15. deg c
+         column 16. none
+         column 17. deg c
+         column 18. none
+         column 19. w m-2
+         column 20. none
+         column 21. w m-2
+         column 22. none
+         column 23. m s-1
+         column 24. none
+         column 25. degrees
+         column 26. none
+      4. Data Type 
+         a. Storage Type: 
+            column  1. string
+            column  2. floating-point
+            column  3. integer
+            column  4. string
+            column  5. floating-point
+            column  6. string
+            column  7. floating-point
+            column  8. string
+            column  9. floating-point
+            column 10. string
+            column 11. floating-point
+            column 12. string
+            column 13. floating-point
+            column 14. string
+            column 15. floating-point
+            column 16. string
+            column 17. floating-point
+            column 18. string
+            column 19. floating-point
+            column 20. string
+            column 21. floating-point
+            column 22. string
+            column 23. floating-point
+            column 24. string
+            column 25. floating-point
+            column 26. string
+         b. Variable Codes: 
+            Flag_RECORD: M = unspecified
+            Flag_RMY_ASP_Avg: M = unspecified
+            Flag_Cotton_Avg: M = unspecified
+            Flag_Gill_Sh_Avg: M = unspecified
+            Flag_HJA_Sh_Avg: M = unspecified
+            Flag_Gill_Lg_Avg: M = unspecified
+            Flag_HJA_Lg_Avg: M = unspecified
+            Flag_Gill_AF_Avg: M = unspecified
+            Flag_CM3_Up_Avg: M = unspecified
+            Flag_CM3_Dn_Avg: M = unspecified
+            Flag_WINDSP_AVG: B = unspecified, M = unspecified, N = unspecified
+            Flag_WINDDIR_AVG: I = invalid value (out of range), M = unspecified
+         c. Numeric Range: 
+            column  1. (none)
+            column  2. 735965 to 736229.4271
+            column  3. 0 to 60585
+            column  4. (none)
+            column  5. -4.955 to 40.38
+            column  6. (none)
+            column  7. -5.21 to 41.51
+            column  8. (none)
+            column  9. -5.047 to 41.49
+            column 10. (none)
+            column 11. -5.159 to 43.03
+            column 12. (none)
+            column 13. -5.482 to 40.88
+            column 14. (none)
+            column 15. -5.462 to 42.26
+            column 16. (none)
+            column 17. -5.08 to 40.81
+            column 18. (none)
+            column 19. 0 to 1012
+            column 20. (none)
+            column 21. 0 to 197.8
+            column 22. (none)
+            column 23. 0 to 1.664
+            column 24. (none)
+            column 25. -0.145 to 354.5
+            column 26. (none)
+         d. Missing Value Code: NaN
+      5. Data Format 
+         a. Column Type: 
+            column  1. text
+            column  2. numerical
+            column  3. numerical
+            column  4. text
+            column  5. numerical
+            column  6. text
+            column  7. numerical
+            column  8. text
+            column  9. numerical
+            column 10. text
+            column 11. numerical
+            column 12. text
+            column 13. numerical
+            column 14. text
+            column 15. numerical
+            column 16. text
+            column 17. numerical
+            column 18. text
+            column 19. numerical
+            column 20. text
+            column 21. numerical
+            column 22. text
+            column 23. numerical
+            column 24. text
+            column 25. numerical
+            column 26. text
+         b. Number of Columns: 26
+         c. Decimal Places: 
+            column  1. 0
+            column  2. 7
+            column  3. 0
+            column  4. 0
+            column  5. 3
+            column  6. 0
+            column  7. 3
+            column  8. 0
+            column  9. 3
+            column 10. 0
+            column 11. 3
+            column 12. 0
+            column 13. 3
+            column 14. 0
+            column 15. 3
+            column 16. 0
+            column 17. 3
+            column 18. 0
+            column 19. 2
+            column 20. 0
+            column 21. 2
+            column 22. 0
+            column 23. 2
+            column 24. 0
+            column 25. 2
+            column 26. 0
+      6. Logical Variable Type: 
+         column  1. nominal (none)
+         column  2. datetime (continuous)
+         column  3. data (discrete)
+         column  4. coded value (none)
+         column  5. data (continuous)
+         column  6. coded value (none)
+         column  7. data (continuous)
+         column  8. coded value (none)
+         column  9. data (continuous)
+         column 10. coded value (none)
+         column 11. data (continuous)
+         column 12. coded value (none)
+         column 13. data (continuous)
+         column 14. coded value (none)
+         column 15. data (continuous)
+         column 16. coded value (none)
+         column 17. data (continuous)
+         column 18. coded value (none)
+         column 19. data (continuous)
+         column 20. coded value (none)
+         column 21. data (continuous)
+         column 22. coded value (none)
+         column 23. data (continuous)
+         column 24. coded value (none)
+         column 25. data (angular)
+         column 26. coded value (none)
+      7. Flagging Criteria: 
+         column  1. manually-assigned flags
+         column  2. isnan(x)="M";manually-assigned flags
+         column  3. manually-assigned flags
+         column  4. none
+         column  5. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column  6. none
+         column  7. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column  8. none
+         column  9. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column 10. none
+         column 11. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column 12. none
+         column 13. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column 14. none
+         column 15. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column 16. none
+         column 17. 
+            isnan(x)="M";x<=-35="I";x>50="I";x<-18="Q";x>45="Q";x<col_FOURLO="Q";x>col_FOURHI="Q";fl
+            ag_valuechange(x,8,8,1)="I";flag_valuechange(x,6.5,6.5,1)="V";manually-assigned flags
+         column 18. none
+         column 19. isnan(x)="M";x>2000="I";x<-2000="I";x>1060="Q";manually-assigned flags
+         column 20. none
+         column 21. isnan(x)="M";manually-assigned flags
+         column 22. none
+         column 23. x<=0.3="N";x<=1="B";x>20="I";x>15="Q";isnan(x)="M"
+         column 24. none
+         column 25. isnan(x)="M";x<0="I";x>360="I";col_WINDSP_AVG=0="I"
+         column 26. none
+   C. Data Anomalies: 
+V. Supplemental Descriptors 
+   A. Data Acquisition 
+      1. Data Forms: 
+      2. Form Location: 
+      3. Data Entry Validation: 
+   B. Quality Assurance/Quality Control Procedures: 
+   C. Supplemental Materials: 
+   D. Computer Programs: 
+   E. Archival Practices: 
+   F. Publications: 
+   G. History of Data Set Usage 
+      1. Data Request History: 
+      2. Data Set Update History: 
+      3. Review History: 
+      4. Questions and Comments from Users: 

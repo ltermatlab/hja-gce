@@ -1,0 +1,1 @@
+%list any local directories to add to the MATLAB search path on startup below (one directory per line, no punctuation)

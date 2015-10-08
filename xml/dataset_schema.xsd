@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!-- 
+  Schema describing dataset metadata and data values exported in XML format from the GCE Data Toolbox for MATLAB
+  (see https://gce-svn.marsci.uga.edu/trac/GCE_Toolbox/)
+  
+  (c)2013 Wade M. Sheldon and the Georgia Coastal Ecosystems LTER Project
+  
+  This file is part of the GCE Data Toolbox for MATLAB(r) software library.
+  
+  The GCE Data Toolbox is free software: you can redistribute it and/or modify it under the terms
+  of the GNU General Public License as published by the Free Software Foundation, either version 3
+  of the License, or (at your option) any later version.
+  
+  The GCE Data Toolbox is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  PURPOSE. See the GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License along with The GCE Data Toolbox
+  as 'license.txt'. If not, see http://www.gnu.org/licenses/.
+  
+  contact:
+    Wade Sheldon
+    GCE-LTER Project
+    Department of Marine Sciences
+    University of Georgia
+    Athens, GA 30602-3636
+    sheldon@uga.edu
+  
+  last modified: 17-May-2013
+  -->
+  <xs:element name="dataset">
+    <xs:annotation>
+      <xs:documentation>Metadata and data information from a dataset exported from the GCE Data Toolbox for MATLAB</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metadata" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="data" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metadata">
+    <xs:annotation>
+      <xs:documentation>The metadata element contains units, descriptions, datatypes and code definitions for columns in a GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="abstract" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="author" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="units" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="descriptions" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="datatypes" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="codes" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title">
+    <xs:annotation>
+      <xs:documentation>Dataset title</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="abstract">
+    <xs:annotation>
+      <xs:documentation>Dataset descriptive abstract</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="author">
+    <xs:annotation>
+      <xs:documentation>Dataset author name and contact information</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:whiteSpace value="preserve" />
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="units">
+    <xs:annotation>
+      <xs:documentation>Measurement units of each column in the GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="descriptions">
+    <xs:annotation>
+      <xs:documentation>Textual description of each column in the GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="datatypes">
+    <xs:annotation>
+      <xs:documentation>Data type (storage type) of each column in the GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="codes">
+    <xs:annotation>
+      <xs:documentation>Definitions of values codes for each column in the GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="data">
+    <xs:annotation>
+      <xs:documentation>The data element includes data values and qualifier codes for each row and column in a GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="row"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="row">
+    <xs:annotation>
+      <xs:documentation>Data row containing values for each column in a GCE Data Structure</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+      <xs:attribute name="number" use="required">
+        <xs:annotation>
+          <xs:documentation>Ordinal row number in the GCE Data Structure</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"></xs:minInclusive>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="col">
+    <xs:annotation>
+      <xs:documentation>Data column element containing a column name attribute and qualifier attribute for data values</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attribute name="name" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Data set column name</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="qualifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Data value qualifier code (if defined)</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

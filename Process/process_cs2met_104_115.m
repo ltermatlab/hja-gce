@@ -1,0 +1,33 @@
+%% Process and post data 
+
+%% Define function arguments
+source          = 'fetch_cs2met_104_115';
+load 'C:\Users\kennedad\Dropbox\matlab\gce_datatools_380_gce_production\userdata\FINAL_AIRTEMP_QC4SIGMA_leap_ak.mat';    %added 20141202 to account for new qc stats file
+qc_source       = data;
+clear data
+template        = 'LNDB_Cs2Met_104_2';
+sitecode        = 'CS2MET_104';
+profile         = 'LNDB_HJA_CS2MET_104_115';
+pn_dest_root    = localpath('pn_dest_root');
+pn_dest_plot    = localpath('pn_plots_root');
+html            = localpath('html');
+email           = localpath('email');
+pn_dest         = strcat(pn_dest_root,'CS2MET');
+pn_plots        = strcat(pn_dest_root,'CS2MET');
+c               = 2014; % c = clock for real-time processing or yyyy for post processing
+fn_dest         = sprintf('cs2met_104_15min_%d.mat', c(1));
+reprocess       = 1;
+
+%% call the harvester
+%data_harvester_sql(source,template,sitecode,profile,pn_dest,pn_plots,html,email,fn_dest);
+cs2met_data_harvester_sql_v3(source, ...
+    qc_source, ...
+    template, ...
+    sitecode, ...
+    profile, ...
+    pn_dest, ...
+    pn_plots, ...
+    html, ...
+    email, ...
+    fn_dest, ...
+    reprocess);

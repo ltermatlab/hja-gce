@@ -1,0 +1,556 @@
+function ui_expclimdb(op,data)
+%Dialog for exporting data in LTER ClimDB/HydroDB format
+%
+%syntax: msg = ui_expclimdb(op,data)
+%
+%input:
+%  op = operation ('init' to open dialog)
+%  data = data structure to export
+%
+%output:
+%  none
+%
+%
+%(c)2002-2013 Wade M. Sheldon and the Georgia Coastal Ecosystems LTER Project
+%
+%This file is part of the GCE Data Toolbox for MATLAB(r) software library.
+%
+%The GCE Data Toolbox is free software: you can redistribute it and/or modify it under the terms
+%of the GNU General Public License as published by the Free Software Foundation, either version 3
+%of the License, or (at your option) any later version.
+%
+%The GCE Data Toolbox is distributed in the hope that it will be useful, but WITHOUT ANY
+%WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+%PURPOSE. See the GNU General Public License for more details.
+%
+%You should have received a copy of the GNU General Public License along with The GCE Data Toolbox
+%as 'license.txt'. If not, see <http://www.gnu.org/licenses/>.
+%
+%contact:
+%  Wade Sheldon
+%  GCE-LTER Project
+%  Department of Marine Sciences
+%  University of Georgia
+%  Athens, GA 30602-3636
+%  sheldon@uga.edu
+%
+%last modified: 01-Nov-2013
+
+if exist('op','var') ~= 1
+   op = 'init';
+end
+
+if strcmp(op,'init')
+
+   if exist('data','var') ~= 1
+      data = [];
+   end
+
+   if gce_valid(data,'data')
+
+      res = get(0,'ScreenSize');
+
+      bgcolor = [0.9 0.9 0.9];
+
+      %init cache parms
+      site = '';
+      stations = '';
+      last_station = 0;
+      append = 1;
+      open_dataset = 1;
+      filename = '';
+      missing = '20';
+
+      %try to load cached parms
+      if exist('ui_expclimdb.mat','file') == 2
+         vars = load('ui_expclimdb.mat');
+         if isfield(vars,'site')
+            site = vars.site;
+         end
+         if isfield(vars,'stations')
+            stations = vars.stations;
+         end
+         if isfield(vars,'last_station')
+            last_station = vars.last_station;
+         end
+         if isfield(vars,'filename')
+            filename = vars.filename;
+         end
+         if isfield(vars,'append')
+            append = vars.append;
+         end
+         if isfield(vars,'open_dataset')
+            open_dataset = vars.open_dataset;
+         end
+         if isfield(vars,'missing')
+            missing = vars.missing;
+         end
+      end
+
+      %check for site, station codes in file
+      sitecol = name2col(data,'Site',0,'s');
+      if ~isempty(sitecol)
+         sites_data = unique(extract(data,sitecol));
+         if length(sites_data) == 1
+            site = sites_data{1};
+         end
+      end
+
+      %check for station codes in file
+      stationcol = name2col(data,'Station',0,'s');
+      if ~isempty(stationcol)
+         stations_data = unique(extract(data,stationcol));
+         if length(stations_data) == 1
+            station = stations_data{1};  %use unique station code as last station
+            if ~isempty(stations)
+               Istation = find(strcmp(stations,station));  %check station list for new station
+               if isempty(Istation)
+                  stations = [stations ; {station}];  %add new station to list
+                  last_station = length(stations);
+               else
+                  last_station = 0;  %reset last station selector since doesn't match data file site col
+               end
+            else
+               stations = {station};  %no existing station list - create new list with 1 station
+               last_station = 1;
+            end
+         end
+      end
+
+      if ~isempty(stations)
+         str_stations = [{'<select station>'} ; stations];
+      else
+         str_stations = {'<select station>'};
+      end
+
+      h_dlg = figure('Name','Export ClimDB/HydroDB', ...
+         'Color',[0.95 0.95 0.95], ...
+         'KeyPressFcn','figure(gcf)', ...
+         'MenuBar','none', ...
+         'NumberTitle','off', ...
+         'Position',[(res(3)-600).*0.5 (res(4)-203).*0.5 600 260], ...
+         'Tag','dlgExpClimdb', ...
+         'ToolBar','none', ...
+         'Visible','off', ...
+         'Resize','off');
+
+      if mlversion >= 7
+         set(h_dlg,'WindowStyle','normal')
+         set(h_dlg,'DockControls','off')
+      end
+
+     uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 0], ...
+         'Position',[10 45 580 205], ...
+         'Style','frame', ...
+         'Tag','frame');
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 .8], ...
+         'FontSize',10, ...
+         'FontWeight','bold', ...
+         'Position',[20 206 80 20], ...
+         'HorizontalAlignment','left', ...
+         'String','Site Code', ...
+         'Style','text', ...
+         'Tag','lblSite');
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 .8], ...
+         'FontSize',10, ...
+         'FontWeight','bold', ...
+         'Position',[170 206 105 20], ...
+         'String','Station Code', ...
+         'Style','text', ...
+         'Tag','lblStation');
+
+      h_editSite = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',[1 1 1], ...
+         'Callback','ui_expclimdb(''buttons'')', ...
+         'FontSize',10, ...
+         'HorizontalAlignment','left', ...
+         'Position',[100 204 60 25], ...
+         'String',site, ...
+         'Style','edit', ...
+         'Tag','editSite');
+
+      h_popStation = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',[1 1 1], ...
+         'ForegroundColor',[0 0 0], ...
+         'Callback','ui_expclimdb(''buttons'')', ...
+         'FontSize',10, ...
+         'HorizontalAlignment','left', ...
+         'Position',[275 204 160 25], ...
+         'Style','popupmenu', ...
+         'Value',last_station+1, ...
+         'String',str_stations, ...
+         'Tag','popStation');
+
+      h_cmdAddStation = uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''addstation'')', ...
+         'FontSize',10, ...
+         'Position',[440 205 65 25], ...
+         'String','Add', ...
+         'TooltipString','Add a new station to the list', ...
+         'Tag','cmdAddStation');
+
+      uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''delstation'')', ...
+         'FontSize',10, ...
+         'Position',[510 205 65 25], ...
+         'String','Delete', ...
+         'TooltipString','Delete the selected station from the list', ...
+         'Tag','cmdDelStation');
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 .8], ...
+         'FontSize',10, ...
+         'FontWeight','bold', ...
+         'Position',[20 163 80 20], ...
+         'String','Export File', ...
+         'HorizontalAlignment','left', ...
+         'Style','text', ...
+         'Tag','lblFile');
+
+      h_editFile = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',[1 1 1], ...
+         'FontSize',9, ...
+         'HorizontalAlignment','left', ...
+         'Position',[100 163 443 22], ...
+         'String',filename, ...
+         'Style','edit', ...
+         'Callback','ui_expclimdb(''buttons'')', ...
+         'Tag','editFile');
+
+      h_cmdBrowse = uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''browse'')', ...
+         'FontSize',12, ...
+         'FontWeight','bold', ...
+         'Position',[545 164 30 21], ...
+         'String','...', ...
+         'TooltipString','Browse to select or create an export file', ...
+         'Tag','cmdBrowse');
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 .8], ...
+         'FontSize',10, ...
+         'FontWeight','bold', ...
+         'Position',[20 125 80 20], ...
+         'String','Options', ...
+         'HorizontalAlignment','left', ...
+         'Style','text', ...
+         'Tag','lblFile');
+
+      h_chkAppend = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'FontSize',10, ...
+         'Position',[100 123 235 25], ...
+         'String','Append data if file already exists?', ...
+         'Style','checkbox', ...
+         'Tag','chkAppend', ...
+         'TooltipString','Option to append new data if the export file already exists', ...
+         'Value',append);
+
+      h_chkOpen = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'FontSize',10, ...
+         'Position',[335 123 235 25], ...
+         'String','View processed data after export?', ...
+         'Style','checkbox', ...
+         'Tag','chkOpen', ...
+         'TooltipString','Option to open the converted data set in a Data Editor window after export', ...
+         'Value',open_dataset);
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 0], ...
+         'FontSize',10, ...
+         'Position',[100 95 170 20], ...
+         'String','Maximum Percent Missing:', ...
+         'HorizontalAlignment','left', ...
+         'Style','text', ...
+         'Tag','lblMissing');
+
+      h_editMissing = uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',[1 1 1], ...
+         'Callback','ui_expclimdb(''missing'')', ...
+         'FontSize',10, ...
+         'HorizontalAlignment','left', ...
+         'Position',[268 95 40 22], ...
+         'String',missing, ...
+         'Style','edit', ...
+         'Tag','editMissing');
+
+      uicontrol('Parent',h_dlg, ...
+         'BackgroundColor',bgcolor, ...
+         'ForegroundColor',[0 0 0], ...
+         'FontSize',10, ...
+         'Position',[312 95 200 20], ...
+         'String','%  (NaN to suppress flagging)', ...
+         'HorizontalAlignment','left', ...
+         'Style','text', ...
+         'Tag','lblMissing2');
+
+      h_cmdMappings = uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''mappings'')', ...
+         'FontSize',10, ...
+         'Position',[165 57 270 26], ...
+         'String','View/Edit Attribute Mappings', ...
+         'Tag','cmdMappings');
+
+      h_cmdCancel = uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''cancel'')', ...
+         'FontSize',10, ...
+         'Position',[10 10 80 26], ...
+         'String','Cancel', ...
+         'Tag','cmdCancel');
+
+      h_cmdEval = uicontrol('Parent',h_dlg, ...
+         'Callback','ui_expclimdb(''eval'')', ...
+         'Enable','off', ...
+         'FontSize',10, ...
+         'Position',[510 10 80 26], ...
+         'String','Proceed', ...
+         'Tag','cmdEval');
+
+      uih = struct('data',data, ...
+         'stations',{stations}, ...
+         'site',site, ...
+         'last_stations',last_station, ...
+         'editSite',h_editSite, ...
+         'popStation',h_popStation, ...
+         'editFile',h_editFile, ...
+         'cmdAddStation',h_cmdAddStation, ...
+         'cmdBrowse',h_cmdBrowse, ...
+         'chkAppend',h_chkAppend, ...
+         'chkOpen',h_chkOpen, ...
+         'editMissing',h_editMissing, ...
+         'cmdMappings',h_cmdMappings, ...
+         'cmdCancel',h_cmdCancel, ...
+         'cmdEval',h_cmdEval);
+
+      set(h_dlg,'UserData',uih,'Visible','on')
+
+      ui_expclimdb('buttons')
+
+   end
+
+else  %handle callbacks
+
+   if length(findobj) > 1
+
+      h_dlg = gcf;
+
+      if strcmp(get(h_dlg,'Tag'),'dlgExpClimdb')
+
+         uih = get(h_dlg,'UserData');
+
+         switch op
+
+            case 'cancel'
+
+               close(h_dlg)
+               ui_aboutgce('reopen')  %check for last window
+
+            case 'eval'
+
+               stations = uih.stations;
+               site = deblank(get(uih.editSite,'String'));
+               last_station = get(uih.popStation,'Value') - 1;
+               station = stations{last_station};
+               filename = deblank(get(uih.editFile,'String'));
+               append = get(uih.chkAppend,'Value');
+               open_dataset = get(uih.chkOpen,'Value');
+
+               %format missing criteria as numeric
+               str_missing = get(uih.editMissing,'String');
+               if ~isempty(str_missing)
+                  missing = str2double(str_missing);
+               else
+                  missing = NaN;
+               end
+
+               [pn_out,fn,ext] = fileparts(filename);
+               fn_out = [fn,ext];
+
+               set(h_dlg,'Pointer','watch'); drawnow
+               [msg,status,s] = exp_climdb(uih.data,site,station,fn_out,pn_out,append,missing);
+               set(h_dlg,'Pointer','arrow'); drawnow
+
+               if status == 1
+                  close(h_dlg)
+                  pn = [gce_homepath,filesep,'settings'];
+                  if ~isdir(pn)
+                     pn = fileparts(which('ui_expclimdb'));
+                  end
+                  try
+                     save([pn,filesep,'ui_expclimdb.mat'], ...
+                        'site','stations','last_station','filename','append','open_dataset','missing')
+                  catch
+                  end
+                  if ~isempty(s)
+                     if open_dataset == 0
+                        str = char(msg,'',wordwrap(['Data columns exported: ',cell2commas(s.name,1)],max(60,length(msg)),0,'char'));
+                     else
+                        ui_editor('init',s);
+                        str = '';
+                     end
+                  else
+                     str = msg;
+                  end
+                  if ~isempty(str)
+                     messagebox('init',str,'','Info',[.9 .9 .9])
+                  end
+               else
+                  messagebox('init',msg,'','Warning',[.9 .9 .9])
+               end
+
+            case 'browse'  %browse to select a filename
+
+               filename = get(uih.editFile,'String');
+               curpath = pwd;
+
+               if ~isempty(filename)
+                  [pn,fn,ext] = fileparts(filename);
+                  filemask = [fn,ext];
+               else
+                  pn = curpath;
+                  filemask = '*.txt';
+               end
+
+               cd(pn)
+               [fn,pn] = uiputfile(filemask,'Specify a filename and location for the ClimDB/HydroDB file');
+               cd(curpath)
+
+               if fn ~= 0
+                  set(uih.editFile,'String',[pn,fn])
+                  ui_expclimdb('buttons')
+               end
+
+            case 'addstation'  %add a station to the list
+
+               ui_text_prompt('init',uih.popStation,'ui_expclimdb(''addstation2'')', ...
+                  '','ClimDB/HydroDB Station Code:','Add ClimDB/HydroDB Station')
+
+            case 'addstation2'  %process station entries
+
+               str = get(uih.popStation,'UserData');  %retrieve cached string
+               set(uih.popStation,'UserData','')  %clear cached string
+
+               if ~isempty(str)
+                  if ~isempty(uih.stations)
+                     stations = unique([uih.stations ; {str}]);
+                     val = find(strcmp(stations,str));
+                  else
+                     stations = {str};
+                     val = 1;
+                  end
+                  uih.stations = stations;
+                  set(h_dlg,'UserData',uih)
+                  set(uih.popStation,'String',[{'<select station>'} ; stations],'Value',val+1)
+                  ui_expclimdb('buttons')
+               end
+
+            case 'delstation'  %delete selected station
+
+               Isel = get(uih.popStation,'Value');
+
+               if Isel > 1
+                  stations = uih.stations;
+                  Ikeep = setdiff((1:length(stations))',Isel-1);
+                  uih.stations = stations(Ikeep);
+                  set(uih.popStation,'String',[{'<select station>'} ; stations(Ikeep)],'Value',Isel-1)
+                  set(h_dlg,'UserData',uih)
+                  drawnow
+               end
+
+            case 'mappings'  %view/edit Climdb attribute mappings
+
+               msg = '';
+               if exist('exp_climdb.mat','file') == 2
+                  try
+                     vars = load('exp_climdb.mat');
+                  catch
+                     vars = struct('null','');
+                  end
+                  if isfield(vars,'data')
+                     ui_datagrid('init',vars.data,uih.cmdMappings,'ui_expclimdb(''savemappings'')', ...
+                        180,'left');
+                  else
+                     msg = 'The file ''exp_climdb.mat'' is invalid and could not be viewed';
+                  end
+               else
+                  msg = 'The file ''exp_climdb.mat'' is not present in the search path';
+               end
+
+               if ~isempty(msg)
+                  messagebox('init',msg,'','Warning',[.9 .9 .9])
+               end
+
+            case 'savemappings'  %process edited mappings
+
+               %get data returned from ui_datagrid
+               ud = get(uih.cmdMappings,'UserData');
+               set(uih.cmdMappings,'UserData',[])  %clear cached data
+
+               %check for successful data return
+               if length(ud) >= 2
+                  
+                  %get data structure and dirty flag
+                  data = ud{1};
+                  dirtyflag = ud{2};
+                  
+                  %check for changes and save file
+                  if ~isempty(data) && dirtyflag == 1
+                     pn = fileparts(which('exp_climdb.mat'));
+                     if isempty(pn)
+                        pn = [gce_homepath,filesep,'settings'];
+                     end
+                     if isdir(pn)
+                        save([pn,filesep,'exp_climdb.mat'],'data')
+                     else
+                        messagebox('init','Location to save ClimDB mappings file could not be determined','','Error',[.9 .9 .9])
+                     end
+                  end
+                  
+               end
+
+            case 'missing'  %validate percent missing criteria
+
+               str = deblank(get(uih.editMissing,'String'));
+
+               if ~isempty(str)
+                  if isempty(str2double(str))
+                     str = 'NaN';
+                  end
+               else
+                  str = '';
+               end
+
+               set(uih.editMissing,'String',str)
+
+            case 'buttons'  %update button states
+
+               strSite = deblank(get(uih.editSite,'String'));
+               Station = get(uih.popStation,'Value');
+               strFile = deblank(get(uih.editFile,'String'));
+
+               if ~isempty(strSite) && Station > 1 && ~isempty(strFile)
+                  set(uih.cmdEval,'Enable','on')
+               else
+                  set(uih.cmdEval,'Enable','off')
+               end
+               drawnow
+
+         end
+
+      end
+
+   end
+
+end
