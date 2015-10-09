@@ -1,0 +1,23 @@
+hello, today is 13-Mar-2015 08:50:36 and you are processing:
+cenmet sheltered-->
+entering rainy mode on 2015-01-17 03:10:00
+switching to the dry state on 2015-01-21 07:15:00
+the raining mode is activated on 2015-01-24 14:05:00 since we have accumulated 0.10
+the 3mm continuing maintenance was triggered on 2015-01-26 14:25:00 due to a drop of -14.13
+switching to the dry state on 2015-01-28 18:15:00
+the raining mode is activated on 2015-02-01 11:30:00 since we have accumulated 0.56
+switching to the dry state on 2015-02-05 16:15:00
+the raining mode is activated on 2015-02-05 16:45:00 since we have accumulated 0.20
+switching to the dry state on 2015-02-09 21:05:00
+the raining mode is activated on 2015-02-09 21:30:00 since we have accumulated 0.60
+switching to the dry state on 2015-02-14 02:00:00
+the raining mode is activated on 2015-02-16 08:30:00 since we have accumulated 0.20
+switching to the dry state on 2015-02-20 12:40:00
+the raining mode is activated on 2015-02-23 15:25:00 since we have accumulated 0.07
+switching to the dry state on 2015-02-27 19:30:00
+the raining mode is activated on 2015-02-28 01:10:00 since we have accumulated 0.30
+switching to the dry state on 2015-03-04 05:15:00
+a maintenance was detected for PPTCEN02 on 2015-01-26 14:15:00with a magnitude of -98.46
+a maintenance was detected for PPTCEN02 on 2015-01-26 14:20:00with a magnitude of -14.21
+a maintenance was detected for PPTCEN02 on 2015-01-26 14:25:00with a magnitude of -14.13
+a maintenance was detected for PPTCEN02 on 2015-02-19 14:10:00with a magnitude of -170.16
